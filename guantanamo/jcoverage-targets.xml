@@ -1,15 +1,15 @@
 <project>
     <import file="common-targets.xml"/>
 
-    <taskdef resource="tasks.properties">
-        <classpath>
-            <fileset dir="lib"/>
-        </classpath>
-    </taskdef>
-
     <target name="test-and-coverage-report" depends="init,compile,instrument,test,coverage-report,assert-tests-passed"/>
 
     <target name="init">
+        <taskdef resource="tasks.properties">
+            <classpath>
+                <fileset dir="lib"/>
+            </classpath>
+        </taskdef>
+
         <delete file="jcoverage.ser"/>
         <delete dir="${param.instrumented.classes.dir}"/>
         <delete dir="${param.classes.dir}"/>

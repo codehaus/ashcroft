@@ -14,6 +14,12 @@
             <param name="src" value="testdata"/>
             <param name="test" value="testdata"/>
         </antcall>
+
+        <antcall target="-build">
+            <param name="tool" value="emma"/>
+            <param name="src" value="testdata"/>
+            <param name="test" value="testdata"/>
+        </antcall>
     </target>
 
     <target name="main" depends="testdata">
@@ -25,6 +31,12 @@
 
         <antcall target="-build">
             <param name="tool" value="jcoverage"/>
+            <param name="src" value="main"/>
+            <param name="test" value="test"/>
+        </antcall>
+
+        <antcall target="-build">
+            <param name="tool" value="emma"/>
             <param name="src" value="main"/>
             <param name="test" value="test"/>
         </antcall>

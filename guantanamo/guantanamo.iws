@@ -145,17 +145,24 @@
     <option name="HIDE_WARNINGS" value="false" />
   </component>
   <component name="FileEditorManager" split-orientation="vertical" split-proportion="0.5">
-    <first-group selected-file="file://$PROJECT_DIR$/build.xml">
+    <first-group selected-file="file://$PROJECT_DIR$/emma-targets.xml">
       <entry file="file://$PROJECT_DIR$/build.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="61" column="0" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.6574803">
+          <state line="38" column="42" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.8366142">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/emma-targets.xml" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="36" column="0" selection-start="1277" selection-end="1277" vertical-scroll-proportion="1.2047244">
             <folding />
           </state>
         </provider>
       </entry>
       <entry file="file://$PROJECT_DIR$/jcoverage-targets.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="2" column="0" selection-start="10" selection-end="50" vertical-scroll-proportion="0.06692913">
+          <state line="33" column="0" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.93307084">
             <folding />
           </state>
         </provider>
@@ -169,14 +176,7 @@
       </entry>
       <entry file="file://$PROJECT_DIR$/common-targets.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.28489482">
-            <folding />
-          </state>
-        </provider>
-      </entry>
-      <entry file="file://$PROJECT_DIR$/src/testdata/org/codehaus/guantanamo/testdata/ProperlyTested.java" pinned="false">
-        <provider selected="true" editor-type-id="text-editor">
-          <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.42256215">
+          <state line="26" column="89" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.6271511">
             <folding />
           </state>
         </provider>
@@ -568,13 +568,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build-old.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="0" selection-start="9837" selection-end="9969" vertical-scroll-proportion="1.269685">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant/GuantanamoTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="25" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.51434034">
@@ -649,13 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jcoverage-targets.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="10" selection-end="50" vertical-scroll-proportion="0.06692913">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist-targets.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="64" selection-start="115" selection-end="115" vertical-scroll-proportion="0.09751434">
@@ -663,16 +649,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/emma-targets.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="0" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.6574803">
+        <state line="36" column="0" selection-start="1277" selection-end="1277" vertical-scroll-proportion="1.2047244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jcoverage-targets.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.93307084">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common-targets.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.28489482">
+        <state line="26" column="89" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.6271511">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="42" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.8366142">
           <folding />
         </state>
       </provider>

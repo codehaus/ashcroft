@@ -1,0 +1,44 @@
+<project>
+    <import file="common-targets.xml"/>
+
+    <target name="test-and-coverage-report" depends="init,compile,instrument,test,coverage-report,assert-tests-passed"/>
+
+    <target name="init">
+        <taskdef resource="emma_ant.properties">
+            <classpath>
+                <fileset dir="lib"/>
+            </classpath>
+        </taskdef>
+
+        <delete dir="${param.coverage.report.dir}/metadata.emma"/>
+        <delete dir="${param.instrumented.classes.dir}"/>
+        <delete dir="${param.classes.dir}"/>
+    </target>
+
+    <target name="instrument">
+        <emma enabled="true">
+            <instr instrpath="${param.classes.dir}"
+                destdir="${param.instrumented.classes.dir}"
+                metadatafile="${param.coverage.report.dir}/metadata.emma"
+                merge="true">
+                <filter excludes="**/*Test.class"/>
+            </instr>
+        </emma>
+    </target>
+
+    <target name="coverage-report">
+        <emma enabled="true">
+            <report sourcepath="${param.src.dir}">
+                <fileset dir="${param.coverage.report.dir}">
+                    <include name="*.emma"/>
+                </fileset>
+                <xml outfile="${param.coverage.report.dir}/coverage.xml"
+                    depth="method"
+                    columns="name,class,method,block,line"/>
+                <html outfile="${param.coverage.report.dir}/coverage.html"
+                    depth="method"
+                    columns="name,class,method,block,line"/>
+            </report>
+        </emma>
+    </target>
+</project>

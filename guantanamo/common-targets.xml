@@ -24,6 +24,9 @@
                 <pathelement location="${ant.home}/lib/clover-1.1.1.jar"/>
                 <fileset dir="lib"/>
             </classpath>
+            <jvmarg value="-Demma.coverage.out.file=${param.coverage.report.dir}/metadata.emma" />
+            <jvmarg value="-Demma.coverage.out.merge=true" />
+
             <formatter type="xml"/>
             <formatter type="plain"/>
             <batchtest todir="${param.test.log.dir}">
