@@ -1,4 +1,3 @@
-
 Having a unit test suite that is slow is very annoying. Anything that takes more than 10 seconds is slow. Worse, having a test suite that is more than slow is not only annoying, it is also painful. Anything that takes more than a minute to run is painful.
 
 If a test suite takes 10 minutes to run, you can in theory run it six times an hour. However, because most humans will do what they can to avoid pain, they will typically not run such a test suite more than 6 times a day.
