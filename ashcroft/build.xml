@@ -39,6 +39,7 @@
                 <pathelement location="target/classes"/>
                 <pathelement location="target/test-classes"/>
                 <pathelement location="lib/qdox-1.6-SNAPSHOT.jar"/>
+                <!-- These two are needed in order to build on a headless environment -->
                 <pathelement location="lib/pja-2.5.jar"/>
                 <!-- These two are needed in order to build on JDK1.3 -->
                 <pathelement location="${ant.home}/lib/xercesImpl.jar"/>
