@@ -30,26 +30,41 @@ public class JohnAshcroft extends SecurityManager {
 
     private static final String LOGGING = System.getProperty("com.thoughtworks.ashcroft.runtime.logging");
     private static PrintWriter LOG_WRITER = null;
+    private static final boolean FORGIVING = "true".equals(System.getProperty("com.thoughtworks.ashcroft.runtime.forgiving"));
 
     private boolean inGetStackTrace = false;
     private boolean hypocricy = false;
 
     static {
         if (LOGGING != null) {
-            if (LOGGING.equals("stdout")) {
-                LOG_WRITER = new PrintWriter(System.out);
-            } else if (LOGGING.equals("stderr")) {
-                LOG_WRITER = new PrintWriter(System.err);
-            } else {
-                try {
-                    LOG_WRITER = new PrintWriter(new FileWriter(LOGGING));
-                } catch (IOException e) {
-                    System.err.println("Ashcroft couldn't write log to " + LOGGING);
-                    e.printStackTrace(System.err);
-                    System.exit(-1);
-                }
+            initializeLogWriter();
+            initializeLogFlusher();
+        }
+    }
+
+    private static void initializeLogWriter() {
+        if (LOGGING.equals("stdout")) {
+            LOG_WRITER = new PrintWriter(System.out);
+        } else if (LOGGING.equals("stderr")) {
+            LOG_WRITER = new PrintWriter(System.err);
+        } else {
+            try {
+                LOG_WRITER = new PrintWriter(new FileWriter(LOGGING));
+            } catch (IOException e) {
+                System.err.println("Ashcroft couldn't write log to " + LOGGING);
+                e.printStackTrace(System.err);
+                System.exit(-1);
             }
         }
+    }
+
+    private static void initializeLogFlusher() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                LOG_WRITER.flush();
+                LOG_WRITER.close();
+            }
+        });
     }
 
     public void checkAccess(Thread t) {
@@ -192,9 +207,12 @@ public class JohnAshcroft extends SecurityManager {
             hypocricy = true;
             LOG_WRITER.println(whatYouCantDo);
             LOG_WRITER.println(stackTrace);
+            LOG_WRITER.println("--------------------------------------------------------------------------------");
             hypocricy = false;
         }
-        throw new CantDoThat(whatYouCantDo, stackTrace);
+        if(!FORGIVING) {
+            throw new CantDoThat(whatYouCantDo, stackTrace);
+        }
     }
 
 }

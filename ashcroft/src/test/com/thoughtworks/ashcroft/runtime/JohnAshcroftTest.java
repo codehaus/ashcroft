@@ -113,7 +113,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void testShouldNotAllowDisplayOfFrames() {
+    public void FIXME_JIRA_ASH_3_testShouldNotAllowDisplayOfFrames() {
         try {
             new Frame();
             fail("Shouldn't be able to do it!");

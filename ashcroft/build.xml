@@ -1,5 +1,9 @@
 <project name="Ashcroft" default="jar" basedir=".">
 
+    <property environment="ENV"/>
+    <property name="build" value="${ENV.DAMAGECONTROL_BUILD_LABEL}"/>
+    <property name="version" value="0.1.${build}"/>
+
     <path id="main-classes">
         <pathelement location="lib/qdox-1.6-SNAPSHOT.jar"/>
     </path>
@@ -14,7 +18,7 @@
     </target>
 
     <target name="jar" depends="compile, test, fail-if-failed">
-        <jar basedir="target/classes" jarfile="target/ashcroft.jar"/>
+        <jar basedir="target/classes" jarfile="target/ashcroft-${version}.jar"/>
     </target>
 
     <target name="compile">
