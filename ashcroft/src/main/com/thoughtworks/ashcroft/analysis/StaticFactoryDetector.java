@@ -1,4 +1,4 @@
-BLApackage com.thoughtworks.ashcroft.analysis;
+package com.thoughtworks.ashcroft.analysis;
 
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaMethod;
