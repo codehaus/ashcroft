@@ -18,11 +18,11 @@ import java.util.TimeZone;
  */
 public class JohnAshcroftTest extends TestCase {
 
-    public void XtestShouldAllowCreationOfNewFileObject() {
+    public void testShouldAllowCreationOfNewFileObject() {
         new File("church");
     }
 
-    public void XtestShouldNotAllowCreationOfTempFile() throws IOException {
+    public void testShouldNotAllowCreationOfTempFile() throws IOException {
         try {
             File.createTempFile("yahoo", "john");
             fail("Shouldn't be able to do it!");
@@ -31,7 +31,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowCreationOfTempFileInARootFolder() throws IOException {
+    public void testShouldNotAllowCreationOfTempFileInARootFolder() throws IOException {
         try {
             File.createTempFile("yahoo", "john", new File(System.getProperty("user.dir")));
             fail("Shouldn't be able to do it!");
@@ -41,7 +41,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowReadingOfFiles() throws IOException {
+    public void testShouldNotAllowReadingOfFiles() throws IOException {
         String fileName = "C:\\Windows\\explorer.exe";
         try {
             new FileInputStream(new File(fileName)).read();
@@ -51,7 +51,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowToCheckForFilePresence() {
+    public void testShouldNotAllowToCheckForFilePresence() {
         String fileName = "C:\\foo\\bar";
         try {
             new File(fileName).exists();
@@ -61,7 +61,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowToCreateDirectories() {
+    public void testShouldNotAllowToCreateDirectories() {
         String fileName = "C:\\foo\\bar";
         try {
             new File(fileName).mkdirs();
@@ -71,11 +71,11 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldAllowCreationOfNewURLObject() throws MalformedURLException {
+    public void testShouldAllowCreationOfNewURLObject() throws MalformedURLException {
         new File("church").toURL();
     }
 
-    public void XtestShouldNotAllowOpeningSockets() throws IOException {
+    public void testShouldNotAllowOpeningSockets() throws IOException {
         try {
             new Socket("localhost", 9999);
             fail("Shouldn't be able to do it!");
@@ -84,7 +84,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowServerSockets() throws IOException {
+    public void testShouldNotAllowServerSockets() throws IOException {
         try {
             new ServerSocket(9999).accept();
             fail("Shouldn't be able to do it!");
@@ -93,7 +93,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowCheckingURLsForEqualityBecauseStupidURLImplementationWantsToGoOnline() throws IOException {
+    public void testShouldNotAllowCheckingURLsForEqualityBecauseStupidURLImplementationWantsToGoOnline() throws IOException {
         try {
             assertEquals(new URL("http://www.google.com/"), new URL("http://www.google.com/"));
             fail("Shouldn't be able to do it!");
@@ -102,7 +102,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowCreationOfNewThreadObject() {
+    public void testShouldNotAllowCreationOfNewThreadObject() {
         try {
             new Thread("gay");
             fail("Shouldn't be able to do it!");
@@ -120,7 +120,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowExitingVM() {
+    public void testShouldNotAllowExitingVM() {
         try {
             System.exit(666);
             fail("Shouldn't be able to do it!");
@@ -129,7 +129,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowSettingAnotherSecurityManager() {
+    public void testShouldNotAllowSettingAnotherSecurityManager() {
         try {
             System.setSecurityManager(new SecurityManager());
             fail("Shouldn't be able to do it!");
@@ -147,7 +147,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldNotAllowSettingSystemProperty() {
+    public void testShouldNotAllowSettingSystemProperty() {
         try {
             System.setProperty("no", "way");
             fail("Shouldn't be able to do it!");
@@ -156,7 +156,7 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void XtestShouldBeAbleToGetDefaultTimeZone() {
+    public void testShouldBeAbleToGetDefaultTimeZone() {
         TimeZone.getDefault();
     }
 }

@@ -85,6 +85,8 @@ public class JohnAshcroft extends SecurityManager {
                     throw new CantDoThat(CANT_CREATE_DIRECTORIES + file, stackTrace);
                 } else if(isJavaIoFileExistsMethod(stackTrace)) {
                     throw new CantDoThat(CANT_CHECK_FILE_PRESENCE + file, stackTrace);
+                } else if(isTimeZoneGetDefault(stackTrace)) {
+                    // allowed
                 } else if(!isJavaIoFileIsDirectoryMethod(stackTrace)) {
                     throw new CantDoThat(CANT_READ_FILES + file, stackTrace);
                 }
