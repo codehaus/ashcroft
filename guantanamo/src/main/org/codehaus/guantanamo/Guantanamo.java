@@ -27,19 +27,23 @@ import java.util.Stack;
  */
 public class Guantanamo implements SourceModifier {
     private final LineModifierProvider lineModifierProvider;
+    private final Monitor monitor;
     private Stack blocks = new Stack();
 
-    public static void runWithClover(File cloverXml, File destinationFolder) throws IOException {
+    public static void runWithClover(File cloverXml, File destinationFolder, Monitor monitor) throws IOException {
         CloverXmlParser cloverXmlParser = new CloverXmlParser(new FileReader(cloverXml));
-        Guantanamo guantanamo = new Guantanamo(cloverXmlParser);
+        Guantanamo guantanamo = new Guantanamo(cloverXmlParser, monitor);
         cloverXmlParser.accept(new ModifyingSourceVisitor(guantanamo, cloverXmlParser, destinationFolder.toURL()));
     }
 
-    public Guantanamo(LineModifierProvider lineModifierProvider) {
+    public Guantanamo(LineModifierProvider lineModifierProvider, Monitor monitor) {
         this.lineModifierProvider = lineModifierProvider;
+        this.monitor = monitor;
     }
 
     public void modifySource(URL source, URL destination) throws IOException {
+        monitor.source(source);
+        monitor.destination(destination);
         LineReader sourceReader = new LineReader(source);
         String line = null;
         int lineNumber = 1;
@@ -47,6 +51,7 @@ public class Guantanamo implements SourceModifier {
         outFile.getParentFile().mkdirs();
         Writer out = new FileWriter(outFile);
         while ((line = sourceReader.readLine()) != null) {
+            monitor.line(lineNumber, line);
             LineModifier lineModifier = lineModifierProvider.getLineModifier(source, lineNumber);
 
             boolean willBeRemoved = lineModifier.willRemove(line);
@@ -54,9 +59,11 @@ public class Guantanamo implements SourceModifier {
 
             boolean forceRemove = false;
             if (sourceAnalysis.isOpenBlock()) {
+                monitor.openBlock(lineNumber);
                 blocks.push(sourceAnalysis);
             }
             if (sourceAnalysis.isCloseBlock()) {
+                monitor.closeBlock(lineNumber);
                 SourceAnalysis openBlock = (SourceAnalysis) blocks.pop();
                 forceRemove = openBlock.wasRemoved();
             }
@@ -68,9 +75,10 @@ public class Guantanamo implements SourceModifier {
     }
 
     private SourceAnalysis analyseLine(String line, boolean removed) {
-        if (line.trim().endsWith("{")) {
+        final String trimmedLine = line.trim();
+        if (trimmedLine.endsWith("{")) {
             return new OpenBlock(removed);
-        } else if (line.trim().endsWith("}")) {
+        } else if (trimmedLine.endsWith("}") && !trimmedLine.startsWith("*")) {
             return new CloseBlock(removed);
         } else {
             return new PlainCode(removed);

@@ -52,6 +52,7 @@
                 <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
                 <pathelement location="${basedir}/lib/generama-1.1-SNAPSHOT-20041002.jar"/>
                 <pathelement location="${basedir}/lib/antlr-2.7.2.jar"/>
+                <pathelement location="${basedir}/lib/proxytoys-0.1.jar"/>
             </classpath>
         </javac>
     </target>
@@ -116,6 +117,7 @@
                 <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
                 <pathelement location="${basedir}/lib/generama-1.1-SNAPSHOT-20041002.jar"/>
                 <pathelement location="${basedir}/lib/antlr-2.7.2.jar"/>
+                <pathelement location="${basedir}/lib/proxytoys-0.1.jar"/>
                 <pathelement location="${ant.home}/lib/clover-1.1.1.jar"/>
                 <pathelement location="${ant.home}/src/test"/>
             </classpath>

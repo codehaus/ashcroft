@@ -8,40 +8,22 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo.ant;
+package org.codehaus.guantanamo;
 
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Task;
-import org.codehaus.guantanamo.Guantanamo;
-
-import java.io.File;
-import java.io.IOException;
+import java.net.URL;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class GuantanamoTask extends Task {
-    private File destDir;
+public interface Monitor {
+    void source(URL source);
 
-    private File cloverxml;
+    void destination(URL destination);
 
-    public void setDest(File destDir) {
-        this.destDir = destDir;
-    }
+    void line(int lineNumber, String line);
 
-    public void setCloverxml(File cloverxml) {
-        this.cloverxml = cloverxml;
-    }
+    void openBlock(int lineNumber);
 
-    public void execute() throws BuildException {
-        verifyProperties();
-        try {
-            Guantanamo.runWithClover(cloverxml, destDir, new AntMonitor(getProject()));
-        } catch (IOException e) {
-        }
-    }
-
-    private void verifyProperties() {
-    }
+    void closeBlock(int lineNumber);
 }

@@ -10,38 +10,39 @@
  *****************************************************************************/
 package org.codehaus.guantanamo.ant;
 
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Task;
-import org.codehaus.guantanamo.Guantanamo;
+import org.apache.tools.ant.Project;
+import org.codehaus.guantanamo.Monitor;
 
-import java.io.File;
-import java.io.IOException;
+import java.net.URL;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class GuantanamoTask extends Task {
-    private File destDir;
+public class AntMonitor implements Monitor {
+    private final Project project;
 
-    private File cloverxml;
-
-    public void setDest(File destDir) {
-        this.destDir = destDir;
+    public AntMonitor(Project project) {
+        this.project = project;
     }
 
-    public void setCloverxml(File cloverxml) {
-        this.cloverxml = cloverxml;
+    public void source(URL source) {
+        project.log("GUANTANAMO Source: " + source, Project.MSG_VERBOSE);
     }
 
-    public void execute() throws BuildException {
-        verifyProperties();
-        try {
-            Guantanamo.runWithClover(cloverxml, destDir, new AntMonitor(getProject()));
-        } catch (IOException e) {
-        }
+    public void destination(URL destination) {
+        project.log("GUANTANAMO Destination: " + destination, Project.MSG_VERBOSE);
     }
 
-    private void verifyProperties() {
+    public void line(int lineNumber, String line) {
+        project.log("GUANTANAMO Line: " + line, Project.MSG_VERBOSE);
+    }
+
+    public void openBlock(int lineNumber) {
+        project.log("GUANTANAMO Open block: " + lineNumber, Project.MSG_VERBOSE);
+    }
+
+    public void closeBlock(int lineNumber) {
+        project.log("GUANTANAMO Close block: " + lineNumber, Project.MSG_VERBOSE);
     }
 }

@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+import com.thoughtworks.proxy.toys.nullobject.Null;
+
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
@@ -26,7 +28,7 @@ import java.net.URL;
 public class AcceptanceTest extends ASTTestCase {
     public void testShouldRemoveLinesAndLeaveSourceInComplingState() throws IOException, XmlPullParserException, TokenStreamException, RecognitionException {
         File cloverXml = new File("target/testdata/clover-reports/clover.xml");
-        Guantanamo.runWithClover(cloverXml, new File("target/testdata/guantanamoed-src"));
+        Guantanamo.runWithClover(cloverXml, new File("target/testdata/guantanamoed-src"), (Monitor) Null.object(Monitor.class));
         final URL expected = new File("src/expected/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
         final URL guantanamoed = new File("target/testdata/guantanamoed-src/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
         assertAstEquals(expected, guantanamoed);
