@@ -1,1 +1,0 @@
-svn import ashcroft svn://beaver.codehaus.org/ashcroft/scm/ashcroft -m "importing"
