@@ -10,8 +10,8 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -36,7 +36,11 @@ public class ModifyingSourceVisitor implements SourceVisitor {
     }
 
     private URL getOut(URL source) throws MalformedURLException {
-        String sourceRootPath = sourceRootFinder.getSourceRootURL().toExternalForm();
+        final URL sourceRootURL = sourceRootFinder.getSourceRootURL();
+        if(sourceRootURL.equals(destinationRootURL)) {
+            throw new OwnTerritoryException("It's too write the offending source to its original location. Specify a different destination.");
+        }
+        String sourceRootPath = sourceRootURL.toExternalForm();
         String sourcePath = source.toExternalForm();
         String relativeSourcePath = sourcePath.substring(sourceRootPath.length());
 

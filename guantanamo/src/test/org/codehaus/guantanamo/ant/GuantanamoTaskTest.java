@@ -10,6 +10,7 @@
  *****************************************************************************/
 package org.codehaus.guantanamo.ant;
 
+import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import org.jmock.MockObjectTestCase;
 
@@ -41,6 +42,4 @@ public class GuantanamoTaskTest extends MockObjectTestCase {
             }
         }).length);
     }
-
-
 }
