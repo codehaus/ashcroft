@@ -112,10 +112,10 @@
     <option name="HIDE_WARNINGS" value="false" />
   </component>
   <component name="FileEditorManager" split-orientation="vertical" split-proportion="0.5">
-    <first-group selected-file="file://$PROJECT_DIR$/src/main/com/thoughtworks/ashcroft/runtime/JohnAshcroft.java">
+    <first-group selected-file="file://$PROJECT_DIR$/TEST-com.thoughtworks.ashcroft.runtime.JohnAshcroftTest.txt">
       <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/example/StockBuyerTest.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="15" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.51102203">
+          <state line="15" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.47663552">
             <folding>
               <element signature="imports" expanded="true" />
             </folding>
@@ -124,14 +124,28 @@
       </entry>
       <entry file="file://$PROJECT_DIR$/src/main/com/thoughtworks/ashcroft/runtime/JohnAshcroft.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="94" column="0" selection-start="3983" selection-end="3983" vertical-scroll-proportion="0.911157">
+          <state line="94" column="0" selection-start="3983" selection-end="3983" vertical-scroll-proportion="0.82429904">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/runtime/JohnAshcroftTest.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/TEST-com.thoughtworks.ashcroft.runtime.JohnAshcroftTest.txt" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
             <folding />
           </state>
         </provider>
       </entry>
       <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/example/StockBuyer.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="10" column="16" selection-start="220" selection-end="220" vertical-scroll-proportion="0.34068137">
+          <state line="10" column="16" selection-start="220" selection-end="220" vertical-scroll-proportion="0.317757">
             <folding>
               <element signature="imports" expanded="true" />
             </folding>
@@ -140,7 +154,7 @@
       </entry>
       <entry file="file://$PROJECT_DIR$/src/main/com/thoughtworks/ashcroft/analysis/StaticFactoryDetector.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="12" column="13" selection-start="274" selection-end="274" vertical-scroll-proportion="0.2725451">
+          <state line="12" column="13" selection-start="274" selection-end="274" vertical-scroll-proportion="0.2542056">
             <folding />
           </state>
         </provider>
@@ -167,6 +181,8 @@
     <expanded_node url="" module="ashcroft" type="module" />
   </component>
   <component name="ProjectPane">
+    <expanded_node url="file://$PROJECT_DIR$" module="ashcroft" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/target" module="ashcroft" type="directory" />
     <expanded_node url="" module="ashcroft" type="module" />
   </component>
   <component name="ProjectView">
@@ -373,20 +389,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1408" height="1030" extended-state="7" />
+    <frame x="-4" y="-4" width="1408" height="1030" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.29056048" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.13495575" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33002207" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33002207" order="8" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.33002207" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="6" />
       <window_info id="SvnUp" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33002207" order="-1" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.330033" order="8" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.31932154" order="1" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.39514348" order="2" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.12684366" order="1" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.39514348" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33223322" order="4" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
@@ -497,15 +513,6 @@
     <entry file="jar://C:/jdk1.3.1_12/src.jar!/src/java/net/InetAddress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="540" column="25" selection-start="17222" selection-end="17222" vertical-scroll-proportion="0.31585082">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/runtime/JohnAshcroftTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="458" selection-end="458" vertical-scroll-proportion="0.27224198">
           <folding />
         </state>
       </provider>
@@ -540,7 +547,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/example/StockBuyerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.51102203">
+        <state line="15" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.47663552">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -549,24 +556,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/com/thoughtworks/ashcroft/runtime/JohnAshcroft.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="3983" selection-end="3983" vertical-scroll-proportion="0.911157">
+        <state line="94" column="0" selection-start="3983" selection-end="3983" vertical-scroll-proportion="0.82429904">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/com/thoughtworks/ashcroft/analysis/StaticFactoryDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="274" selection-end="274" vertical-scroll-proportion="0.2725451">
+        <state line="12" column="13" selection-start="274" selection-end="274" vertical-scroll-proportion="0.2542056">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/example/StockBuyer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="16" selection-start="220" selection-end="220" vertical-scroll-proportion="0.34068137">
+        <state line="10" column="16" selection-start="220" selection-end="220" vertical-scroll-proportion="0.317757">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TEST-com.thoughtworks.ashcroft.runtime.JohnAshcroftTest.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/com/thoughtworks/ashcroft/runtime/JohnAshcroftTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>

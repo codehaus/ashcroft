@@ -1,25 +1,21 @@
 package com.thoughtworks.ashcroft.example;
 
-import org.jmock.Mock;
-import org.jmock.MockObjectTestCase;
+import junit.framework.TestCase;
+
+import java.io.IOException;
 
 /**
- * Try to run this test with -Djava.security.manager=com.thoughtworks.ashcroft.runtime.JohnAshcroft
- *
  * @author Aslak Helles&oslash;y
  * @version $Revision: 0.0 $
  */
-public class StockBuyerTest extends MockObjectTestCase {
-
-    public void testShouldBuyStocksIfTheyAreCheaperThan80() {
+public class StockBuyerTest extends TestCase {
+    public void testShouldBuyStocksIfTheyAreCheaperThanEighty() throws IOException {
         StockBuyer stockBuyer = new StockBuyer();
+        assertTrue(stockBuyer.shouldBuy("MSFT"));
+    }
 
-        Mock stockTickerMock = mock(StockTicker.class);
-        stockTickerMock.expects(once()).method("getPrice").with(eq("MSFT")).will(returnValue(79));
-        StockTicker mockTicker = (StockTicker) stockTickerMock.proxy();
-
-        stockBuyer.setStockTicker(mockTicker);
-        boolean decision = stockBuyer.shouldBuy("MSFT");
-        assertTrue(decision);
+    public void testShouldNotBuyStocksIfTheyAreMoreExpensiveThanEighty() throws IOException {
+        StockBuyer stockBuyer = new StockBuyer();
+        assertFalse(stockBuyer.shouldBuy("ORA"));
     }
 }
