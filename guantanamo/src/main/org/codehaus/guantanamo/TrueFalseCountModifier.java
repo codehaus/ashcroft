@@ -18,13 +18,21 @@ import java.io.Writer;
  * @version $Revision$
  */
 public class TrueFalseCountModifier implements LineModifier {
+    private final int trueCount;
+    private final int falseCount;
+
     public TrueFalseCountModifier(int trueCount, int falseCount) {
+        this.trueCount = trueCount;
+        this.falseCount = falseCount;
     }
 
     public void write(String line, Writer out, boolean forceRemove) throws IOException {
+        if(!willRemove(line) && !forceRemove) {
+            out.write(line);
+        }
     }
 
     public boolean willRemove(String line) {
-        return true;
+        return trueCount == 0 || falseCount == 0;
     }
 }

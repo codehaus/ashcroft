@@ -20,7 +20,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -37,7 +36,7 @@ public class CloverXmlParserTest extends MockObjectTestCase {
         finder.accept((SourceVisitor) sourceVisitor.proxy());
     }
 
-    private void expectVisitSourceTimes(Mock sourceVisitor, int numberOfSources) throws MalformedURLException {
+    private void expectVisitSourceTimes(Mock sourceVisitor, int numberOfSources) {
         for (int i = 0; i < numberOfSources; i++) {
             sourceVisitor.expects(once()).method("visitSource").with(new Constraint() {
                 public boolean eval(Object o) {

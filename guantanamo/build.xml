@@ -1,10 +1,13 @@
 <project name="guantanamo" default="jar">
     <import file="clover-tasks.xml"/>
 
+    <property name="src.dir" value="${basedir}/src/main"/>
+    <property name="classes.dir" value="${basedir}/target/classes"/>
+
     <target name="compile" depends="clover-init" description="Compile java source">
-        <mkdir dir="${basedir}/target/classes"/>
-        <javac destdir="${basedir}/target/classes" debug="on" includeantruntime="true">
-            <src location="${basedir}/src/main"/>
+        <mkdir dir="${classes.dir}"/>
+        <javac destdir="${classes.dir}" debug="on" includeantruntime="true">
+            <src location="${src.dir}"/>
             <classpath>
                 <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
             </classpath>
@@ -65,7 +68,7 @@
     <target name="assert-tests-passed" depends="run-tests" if="tests.failed">
         <fail>There were test failures</fail>
     </target>
-    <target name="jar" depends="compile" description="Jar java classes">
+    <target name="jar" depends="assert-tests-passed" description="Jar java classes">
         <jar basedir="${basedir}/target/classes" destfile="${basedir}/target/${ant.project.name}.jar"/>
     </target>
 
@@ -74,10 +77,37 @@
     </target>
 
     <!-- we like our own dog food -->
-    <target name="guantanamo" depends="compile">
-        <taskdef name="sourceVisitortor" classname="org.codehaus.guantanamo.GuantanamoTask" classpath="${compile.dest}" />
-        <guantanamo dir="${compile.src}" clover="${clover.dest}">
-            <include name="**/*.java"/>
-        </guantanamo>
+    <target name="guantanamo" depends="jar">
+        <taskdef name="guantanamo" classname="org.codehaus.guantanamo.ant.GuantanamoTask">
+            <classpath>
+                <pathelement location="${basedir}/target/${ant.project.name}.jar"/>
+                <pathelement location="lib/xpp3-1.1.2a.jar"/>
+            </classpath>
+        </taskdef>
+        <mkdir dir="target/guantanamo-self/src"/>
+        <guantanamo cloverxml="target/clover.xml" dest="target/guantanamo-self/src"/>
+    </target>
+
+    <target name="rebuild">
+        <!--
+        Run tests with clover. Must be done twice, since tests will fail
+        unless clover.xml is present. Do this with exec to avoid ant failing.
+        -->
+        <exec executable="ant.bat" failifexecutionfails="false">
+            <arg value="-Dwith.clover=true"/>
+            <arg value="clover-report"/>
+        </exec>
+        <exec executable="ant.bat" failifexecutionfails="false">
+            <arg value="-Dwith.clover=true"/>
+            <arg value="clover-report"/>
+        </exec>
+
+        <!-- run guantanamo over ourself and see if we can still compile -->
+        <antcall target="guantanamo"/>
+
+        <antcall target="compile">
+            <param name="src.dir" value="target/guantanamo-self/src"/>
+            <param name="classes.dir" value="target/guantanamo-self/target"/>
+        </antcall>
     </target>
 </project>

@@ -14,11 +14,10 @@ import org.codehaus.guantanamo.CountModifier;
 import org.codehaus.guantanamo.LineModifier;
 import org.codehaus.guantanamo.LineModifierProvider;
 import org.codehaus.guantanamo.SourceFinder;
+import org.codehaus.guantanamo.SourceRootFinder;
 import org.codehaus.guantanamo.SourceVisitor;
 import org.codehaus.guantanamo.TrueFalseCountModifier;
 import org.codehaus.guantanamo.URLLine;
-import org.codehaus.guantanamo.SourceRootFinder;
-import org.codehaus.guantanamo.SourceAnalysis;
 import org.xmlpull.mxp1.MXParser;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -26,7 +25,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
-import java.io.Writer;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,10 +84,8 @@ public class CloverXmlParser implements SourceFinder, LineModifierProvider, Sour
                         LineModifier lineModifier = null;
                         if (count != null) {
                             lineModifier = new CountModifier(Integer.parseInt(count));
-                        } else if (truecount != null && falsecount != null) {
-                            lineModifier = new TrueFalseCountModifier(Integer.parseInt(truecount), Integer.parseInt(falsecount));
                         } else {
-                            throw new RuntimeException("Unknown coverage");
+                            lineModifier = new TrueFalseCountModifier(Integer.parseInt(truecount), Integer.parseInt(falsecount));
                         }
                         final URLLine URLLine = new URLLine(new File(fileName).toURL(), lineNumber);
                         lineModifiers.put(URLLine, lineModifier);
@@ -100,17 +96,14 @@ public class CloverXmlParser implements SourceFinder, LineModifierProvider, Sour
                         return;
                     }
                     continue;
-                case XmlPullParser.END_DOCUMENT:
-                    return;
-                default:
-                    continue;
             }
         }
     }
 
     public void accept(SourceVisitor sourceVisitor) throws IOException {
         for (Iterator iterator = sourceURLs.iterator(); iterator.hasNext();) {
-            sourceVisitor.visitSource((URL) iterator.next());
+            final URL source = (URL) iterator.next();
+            sourceVisitor.visitSource(source);
         }
     }
 
