@@ -91,10 +91,17 @@ public class JohnAshcroft extends SecurityManager {
         if ("createSecurityManager".equals(perm.getName())) {
             throw new CantDoThat(CANT_INSTALL_SECURITYMANAGER);
         } else if(perm instanceof PropertyPermission) {
-            if ("write".equals(perm.getActions()) && !isTimeZoneGetDefault(getStackTrace())) {
-                throw new CantDoThat(CANT_CHANGE_SYSTEM_PROPERTIES);
+            if (!"line.separator".equals(perm.getName())) {
+                String stackTrace = getStackTrace();
+                if ("write".equals(perm.getActions()) && !isTimeZoneGetDefault(stackTrace)&& !isCompilerRun(stackTrace)) {
+                    throw new CantDoThat(CANT_CHANGE_SYSTEM_PROPERTIES);
+                }
             }
         }
+    }
+
+    private boolean isCompilerRun(String stackTrace) {
+        return stackTrace.indexOf("java.lang.Compiler$1.run") != -1;
     }
 
     private boolean isTimeZoneGetDefault(String stackTrace) {
@@ -123,7 +130,9 @@ public class JohnAshcroft extends SecurityManager {
 
     private String getStackTrace() {
         StringWriter sw = new StringWriter();
-        new Throwable().printStackTrace(new PrintWriter(sw));
-        return sw.toString();
+        PrintWriter pw = new PrintWriter(sw);
+        new Throwable().printStackTrace(pw);
+        String stackTrace = sw.toString();
+        return stackTrace;
     }
 }

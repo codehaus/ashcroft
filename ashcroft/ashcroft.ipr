@@ -188,9 +188,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ashcroft.iml" filepath="$PROJECT_DIR$/ashcroft.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample/integration/test/sample_integration.iml" filepath="$PROJECT_DIR$/sample/integration/test/sample_integration.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample/main/sample_main.iml" filepath="$PROJECT_DIR$/sample/main/sample_main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample/system/sample_system.iml" filepath="$PROJECT_DIR$/sample/system/sample_system.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" assert-keyword="false" jdk-15="false" project-jdk-name="java version &quot;1.3.1_12&quot;" />
