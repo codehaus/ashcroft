@@ -2,6 +2,8 @@ package com.thoughtworks.ashcroft.runtime;
 
 import junit.framework.TestCase;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -156,7 +158,11 @@ public class JohnAshcroftTest extends TestCase {
         }
     }
 
-    public void testShouldBeAbleToGetDefaultTimeZone() {
+    public void testShouldAllowInstantiationOfTimezone() {
         TimeZone.getDefault();
+    }
+
+    public void testShouldAllowInstantiatonXmlParser() throws ParserConfigurationException {
+        DocumentBuilderFactory.newInstance().newDocumentBuilder();
     }
 }

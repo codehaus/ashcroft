@@ -7,8 +7,8 @@ package com.thoughtworks.ashcroft.runtime;
 public class CantDoThat extends Error {
     private final String stackTrace;
 
-    public CantDoThat(String message, String stackTrace) {
-        super(message);
+    public CantDoThat(String whatYouCantDo, String stackTrace) {
+        super(whatYouCantDo);
         this.stackTrace = stackTrace;
     }
 
