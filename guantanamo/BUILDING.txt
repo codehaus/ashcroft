@@ -1,0 +1,14 @@
+There are two ways to build Guantanamo:
+
+1) FULL BUILD
+Put your clover 1.1.1 in your $ANT_HOME/lib folder (I haven't tested with any newer versions)
+Then just run ant (the default target)
+
+This will run the entire acceptance test suite and self-validation, i.e. running Guantanamo over itself
+and verifying that no code was deleted. (The test suite uses a nifty ASTTestCase to compare the
+original and guantanamoed sources - it's similar to XMLUnit, but works with Java Source code).
+
+At the end of the build you should get a target/guantanamo.jar file.
+
+2) SIMPLE BUILD
+Just run ant simple-build. This will create a target/guantanamo.jar file.

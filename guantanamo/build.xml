@@ -209,4 +209,25 @@
         </jar>
     </target>
 
+    <!-- This is linked to from the Confluence docs -->
+
+    <property name="guantanamo.jar.file" value="${jar.file}"/>
+    <property name="xpp3.jar.file" value="lib/xpp3-1.1.2a.jar"/>
+
+    <!-- START SNIPPET: ant-example -->
+    <target name="guantanamo">
+        <taskdef name="guantanamo" classname="org.codehaus.guantanamo.ant.GuantanamoTask">
+            <classpath>
+                <pathelement location="${guantanamo.jar.file}"/>
+                <pathelement location="${xpp3.jar.file}"/>
+            </classpath>
+        </taskdef>
+
+        <mkdir dir="target/main/guantanamoed-src"/>
+
+        <guantanamo
+            cloverxml="target/main/clover-reports/clover.xml"
+            dest="target/main/guantanamoed-src"/>
+    </target>
+    <!-- END SNIPPET: ant-example -->
 </project>
