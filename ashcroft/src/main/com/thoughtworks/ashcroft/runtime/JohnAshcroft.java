@@ -1,4 +1,4 @@
-package com.thoughtworks.ashcroft.runtime;
+EEKpackage com.thoughtworks.ashcroft.runtime;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
