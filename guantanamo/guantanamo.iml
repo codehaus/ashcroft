@@ -14,7 +14,6 @@
       <excludeFolder url="file://$MODULE_DIR$/.clover" />
       <excludeFolder url="file://$MODULE_DIR$/lib" />
       <excludeFolder url="file://$MODULE_DIR$/src/expected" />
-      <excludeFolder url="file://$MODULE_DIR$/src/testdata" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

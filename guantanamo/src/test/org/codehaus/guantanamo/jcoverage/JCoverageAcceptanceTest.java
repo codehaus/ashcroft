@@ -8,12 +8,14 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo;
+package org.codehaus.guantanamo.jcoverage;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
 import org.generama.astunit.ASTTestCase;
 import org.xmlpull.v1.XmlPullParserException;
+import org.codehaus.guantanamo.Guantanamo;
+import org.codehaus.guantanamo.Monitor;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,12 +27,12 @@ import com.thoughtworks.proxy.toys.nullobject.Null;
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class AcceptanceTest extends ASTTestCase {
+public class JCoverageAcceptanceTest extends ASTTestCase {
     public void testShouldRemoveLinesAndLeaveSourceInComplingState() throws IOException, XmlPullParserException, TokenStreamException, RecognitionException {
-        File cloverXml = new File("target/testdata/clover-reports/clover.xml");
-        Guantanamo.runWithClover(cloverXml, new File("target/testdata/guantanamoed-src"), (Monitor) Null.object(Monitor.class));
-        final URL expected = new File("src/expected/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
-        final URL guantanamoed = new File("target/testdata/guantanamoed-src/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
+        File coverageXml = new File("target/jcoverage/testdata/coverage-report/coverage.xml");
+        Guantanamo.runWithJCoverage(coverageXml, new File("target/jcoverage/testdata/guantanamo"), (Monitor) Null.object(Monitor.class));
+        final URL expected = new File("src/expected/jcoverage/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
+        final URL guantanamoed = new File("target/jcoverage/testdata/guantanamo/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
         assertAstEquals(expected, guantanamoed);
     }
 }

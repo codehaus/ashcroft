@@ -145,81 +145,75 @@
     <option name="HIDE_WARNINGS" value="false" />
   </component>
   <component name="FileEditorManager" split-orientation="vertical" split-proportion="0.5">
-    <first-group selected-file="file://$PROJECT_DIR$/build.xml">
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/OpenBlock.java" pinned="false">
-        <provider selected="true" editor-type-id="text-editor">
-          <state line="28" column="0" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.569378">
-            <folding />
-          </state>
-        </provider>
-      </entry>
+    <first-group selected-file="file://$PROJECT_DIR$/common-targets.xml">
       <entry file="file://$PROJECT_DIR$/build.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="208" column="92" selection-start="8689" selection-end="8689" vertical-scroll-proportion="0.3861145">
+          <state line="68" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.76968503">
             <folding />
           </state>
         </provider>
       </entry>
-      <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/DogFoodTest.java" pinned="false">
+      <entry file="file://$PROJECT_DIR$/jcoverage-targets.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="23" column="38" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.47624847">
+          <state line="2" column="0" selection-start="10" selection-end="50" vertical-scroll-proportion="0.06692913">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/dist-targets.xml" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="3" column="64" selection-start="115" selection-end="115" vertical-scroll-proportion="0.09751434">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/common-targets.xml" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.45506692">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/testdata/org/codehaus/guantanamo/testdata/ProperlyTested.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.42256215">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/jcoverage/JCoverageXmlParser.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="84" column="0" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.53543305">
             <folding>
               <element signature="imports" expanded="true" />
             </folding>
           </state>
         </provider>
       </entry>
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/Guantanamo.java" pinned="false">
+      <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/jcoverage/JCoverageXmlParserTest.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="81" column="0" selection-start="3532" selection-end="3532" vertical-scroll-proportion="1.4908648">
-            <folding>
-              <element signature="imports" expanded="true" />
-            </folding>
-          </state>
-        </provider>
-      </entry>
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant/GuantanamoTask.java" pinned="false">
-        <provider selected="true" editor-type-id="text-editor">
-          <state line="39" column="69" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.5083732">
+          <state line="59" column="62" selection-start="3291" selection-end="3291" vertical-scroll-proportion="1.1692914">
             <folding />
           </state>
         </provider>
       </entry>
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant/AntMonitor.java" pinned="false">
+      <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/clover/CloverXmlParserTest.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="41" column="32" selection-start="1615" selection-end="1615" vertical-scroll-proportion="0.73564595">
-            <folding>
-              <element signature="imports" expanded="true" />
-            </folding>
-          </state>
-        </provider>
-      </entry>
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/Monitor.java" pinned="false">
-        <provider selected="true" editor-type-id="text-editor">
-          <state line="27" column="36" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.54904306">
+          <state line="41" column="55" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.7362205">
             <folding />
           </state>
         </provider>
       </entry>
-      <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/AcceptanceTest.java" pinned="false">
+      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/CountModifier.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="31" column="0" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.45554203">
-            <folding>
-              <element signature="imports" expanded="true" />
-            </folding>
-          </state>
-        </provider>
-      </entry>
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/LineModifier.java" pinned="false">
-        <provider selected="true" editor-type-id="text-editor">
-          <state line="20" column="0" selection-start="973" selection-end="973" vertical-scroll-proportion="0.20334928">
+          <state line="35" column="11" selection-start="1455" selection-end="1455" vertical-scroll-proportion="0.8366142">
             <folding />
           </state>
         </provider>
       </entry>
-      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/TrueFalseCountModifier.java" pinned="false">
+      <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/clover/CloverXmlParser.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="40" column="44" selection-start="1665" selection-end="1665" vertical-scroll-proportion="0.6100478">
+          <state line="97" column="0" selection-start="4651" selection-end="4651" vertical-scroll-proportion="2.2086613">
             <folding />
           </state>
         </provider>
@@ -241,19 +235,29 @@
   <component name="NamedScopeManager" />
   <component name="PackagesPane">
     <expanded_node url="org.codehaus.guantanamo" module="guantanamo" type="package" />
-    <expanded_node url="org" module="guantanamo" type="package" />
     <expanded_node url="org.codehaus" module="guantanamo" type="package" />
     <expanded_node url="" module="guantanamo" type="module" />
+    <expanded_node url="org" module="guantanamo" type="package" />
   </component>
   <component name="ProjectPane">
-    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo" module="guantanamo" type="directory" />
-    <expanded_node url="file://$PROJECT_DIR$" module="guantanamo" type="directory" />
     <expanded_node url="file://$PROJECT_DIR$/src/test/org" module="guantanamo" type="directory" />
-    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/ant" module="guantanamo" type="directory" />
-    <expanded_node url="file://$PROJECT_DIR$/src" module="guantanamo" type="directory" />
     <expanded_node url="file://$PROJECT_DIR$/src/test" module="guantanamo" type="directory" />
     <expanded_node url="" module="guantanamo" type="module" />
+    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/jcoverage" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/io" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/ant" module="guantanamo" type="directory" />
     <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/codehaus" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/io" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/clover" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org" module="guantanamo" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/clover" module="guantanamo" type="directory" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" splitterProportion="0.5">
@@ -278,12 +282,12 @@
   </component>
   <component name="RunManager">
     <activeType name="JUnit" />
-    <tempConfiguration selected="true" default="false" name="DogFoodTest" type="JUnit" factoryName="JUnit">
+    <tempConfiguration selected="true" default="false" name="CloverXmlParserTest.testShouldThrowGuantanamoExceptionOnBadXml" type="JUnit" factoryName="JUnit">
       <module name="guantanamo" />
-      <option name="PACKAGE_NAME" value="org.codehaus.guantanamo" />
-      <option name="MAIN_CLASS_NAME" value="org.codehaus.guantanamo.DogFoodTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="org.codehaus.guantanamo.clover" />
+      <option name="MAIN_CLASS_NAME" value="org.codehaus.guantanamo.clover.CloverXmlParserTest" />
+      <option name="METHOD_NAME" value="testShouldThrowGuantanamoExceptionOnBadXml" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -322,6 +326,16 @@
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
     </configuration>
+    <configuration selected="false" default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
     <configuration selected="false" default="true" type="WebLogic Instance" factoryName="Local">
       <option name="WORKING_DIRECTORY" />
       <option name="HOST" value="localhost" />
@@ -336,18 +350,14 @@
       <option name="SERVER_NAME" value="myserver" />
       <option name="DOMAIN_NAME" value="mydomain" />
     </configuration>
-    <configuration selected="false" default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-    </configuration>
   </component>
-  <component name="SelectInManager" />
+  <component name="SelectInManager">
+    <target name="Project" />
+    <target name="File Structure" />
+    <target name="J2EE View" />
+    <target name="Packages" />
+    <target name="Commander" />
+  </component>
   <component name="StarteamConfiguration">
     <option name="SERVER" value="" />
     <option name="PORT" value="49201" />
@@ -429,18 +439,18 @@
     <layout>
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.24703264" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.27893174" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32963374" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="1" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.2608213" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="6" />
-      <window_info id="TestDox" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.077893175" order="3" />
+      <window_info id="TestDox" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.117210686" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.110534124" order="1" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.31853497" order="2" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.10682493" order="1" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.31409544" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
       <window_info id="Clover" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.27670622" order="3" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.46392897" order="4" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.3063263" order="4" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="0" />
@@ -514,154 +524,156 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-    <buildFile url="file://$PROJECT_DIR$/build.xml">
+    <buildFile url="file://$PROJECT_DIR$/build-old.xml">
       <antCommandLine value="" />
       <runInBackground value="false" />
       <targetFilters>
-        <filter targetName="clover-report-history" isVisible="false" />
-        <filter targetName="run-tests" isVisible="false" />
-        <filter targetName="clover-report" isVisible="false" />
-        <filter targetName="jar" isVisible="true" />
-        <filter targetName="compile" isVisible="false" />
         <filter targetName="guantanamo" isVisible="false" />
         <filter targetName="clean" isVisible="false" />
-        <filter targetName="usage" isVisible="false" />
-        <filter targetName="clover-record-history" isVisible="false" />
-        <filter targetName="compile-tests" isVisible="false" />
-        <filter targetName="clover-init" isVisible="false" />
+        <filter targetName="clover-report-generic" isVisible="false" />
+        <filter targetName="run-testdata-tests" isVisible="false" />
+        <filter targetName="compile-main" isVisible="false" />
+        <filter targetName="run-main-tests-with-clover" isVisible="false" />
+        <filter targetName="run-main-tests" isVisible="false" />
+        <filter targetName="assert-tests-passed" isVisible="false" />
+        <filter targetName="run-testdata-tests-with-clover" isVisible="false" />
+        <filter targetName="step-1" isVisible="false" />
+        <filter targetName="step-2" isVisible="false" />
+        <filter targetName="full" isVisible="true" />
+        <filter targetName="clover-init-generic" isVisible="false" />
+        <filter targetName="compile-testdata" isVisible="false" />
+        <filter targetName="simple-build" isVisible="false" />
+        <filter targetName="step-3" isVisible="false" />
+        <filter targetName="run-tests-generic" isVisible="false" />
       </targetFilters>
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+    </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/jcoverage-targets.xml">
+      <antCommandLine value="" />
+      <runInBackground value="false" />
+      <targetFilters />
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+    </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/common-targets.xml">
+      <antCommandLine value="" />
+      <runInBackground value="false" />
+      <targetFilters />
       <treeView value="true" />
       <verbose value="true" />
       <viewClosedWhenNoErrors value="false" />
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/clover/CloverXmlParser.java">
+    <entry file="file://$PROJECT_DIR$/build-old.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="16" selection-start="1882" selection-end="1882" vertical-scroll-proportion="0.4047619">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/expected/org/codehaus/guantanamo/testdata/PoorlyTested.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="17" selection-start="915" selection-end="915" vertical-scroll-proportion="0.33456334">
-          <folding>
-            <marker date="1096699754403" expanded="true" signature="0:790" placeholder="/.../" />
-            <marker date="1096699754403" expanded="true" signature="834:897" placeholder="/**...*/" />
-            <marker date="1096699754403" expanded="true" signature="973:1025" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testdata/org/codehaus/guantanamo/testdata/PoorlyTested.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="7" selection-start="905" selection-end="905" vertical-scroll-proportion="0.14637147">
-          <folding>
-            <marker date="1096700595253" expanded="false" signature="0:790" placeholder="/.../" />
-            <marker date="1096700595253" expanded="true" signature="834:897" placeholder="/**...*/" />
-            <marker date="1096700595253" expanded="true" signature="118:269" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testdata/org/codehaus/guantanamo/testdata/PoorlyTestedTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.2300123">
-          <folding>
-            <marker date="1096699202610" expanded="false" signature="0:790" placeholder="/.../" />
-            <marker date="1096699202610" expanded="true" signature="868:931" placeholder="/**...*/" />
-            <marker date="1096699202610" expanded="true" signature="236:296" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/clover/CloverXmlParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="132" selection-start="1885" selection-end="1885" vertical-scroll-proportion="0.7210626">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="92" selection-start="8689" selection-end="8689" vertical-scroll-proportion="0.3861145">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/OpenBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.569378">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/TrueFalseCountModifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="44" selection-start="1665" selection-end="1665" vertical-scroll-proportion="0.6100478">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/LineModifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="973" selection-end="973" vertical-scroll-proportion="0.20334928">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/AcceptanceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.45554203">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/DogFoodTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="38" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.47624847">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/Monitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="36" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.54904306">
+        <state line="237" column="0" selection-start="9837" selection-end="9969" vertical-scroll-proportion="1.269685">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant/GuantanamoTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="69" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.5083732">
+        <state line="33" column="25" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.51434034">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant/AntMonitor.java">
+    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/clover/CloverGuantanamoTaskTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="32" selection-start="1615" selection-end="1615" vertical-scroll-proportion="0.73564595">
+        <state line="21" column="55" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.29254302">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/ant/AbstractAcceptanceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="1" selection-start="2196" selection-end="2196" vertical-scroll-proportion="1.1023622">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/Guantanamo.java">
+    <entry file="file://$PROJECT_DIR$/src/testdata/org/codehaus/guantanamo/testdata/ProperlyTestedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="0" selection-start="3532" selection-end="3532" vertical-scroll-proportion="1.4908648">
+        <state line="36" column="0" selection-start="1483" selection-end="1483" vertical-scroll-proportion="0.87762904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/testdata/org/codehaus/guantanamo/testdata/ProperlyTested.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.42256215">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/jcoverage/JCoverageXmlParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="0" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.53543305">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/CountModifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="11" selection-start="1455" selection-end="1455" vertical-scroll-proportion="0.8366142">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/jcoverage/JCoverageXmlParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="62" selection-start="3291" selection-end="3291" vertical-scroll-proportion="1.1692914">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/org/codehaus/guantanamo/clover/CloverXmlParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="55" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.7362205">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/clover/CloverXmlParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="0" selection-start="4651" selection-end="4651" vertical-scroll-proportion="2.2086613">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jcoverage-targets.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="10" selection-end="50" vertical-scroll-proportion="0.06692913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist-targets.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="64" selection-start="115" selection-end="115" vertical-scroll-proportion="0.09751434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.76968503">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-targets.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.45506692">
+          <folding />
         </state>
       </provider>
     </entry>

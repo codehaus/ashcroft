@@ -25,20 +25,32 @@ public class GuantanamoTask extends Task {
     private File destDir;
 
     private File cloverxml;
+    private File jcoverage;
 
     public void setDest(File destDir) {
         this.destDir = destDir;
     }
 
-    public void setCloverxml(File cloverxml) {
+    public void setClover(File cloverxml) {
         this.cloverxml = cloverxml;
+    }
+
+    public void setJcoverage(File jcoverage) {
+        this.jcoverage = jcoverage;
     }
 
     public void execute() throws BuildException {
         verifyProperties();
         try {
-            Guantanamo.runWithClover(cloverxml, destDir, new AntMonitor(getProject()));
+            AntMonitor monitor = new AntMonitor(getProject());
+            if(cloverxml != null) {
+                Guantanamo.runWithClover(cloverxml, destDir, monitor);
+            }
+            if(jcoverage != null) {
+                Guantanamo.runWithJCoverage(jcoverage, destDir, monitor);
+            }
         } catch (IOException e) {
+            throw new BuildException(e);
         }
     }
 

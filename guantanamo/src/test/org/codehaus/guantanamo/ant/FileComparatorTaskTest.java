@@ -10,36 +10,38 @@
  *****************************************************************************/
 package org.codehaus.guantanamo.ant;
 
+import junit.framework.TestCase;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
-import org.jmock.MockObjectTestCase;
 
 import java.io.File;
-import java.io.FilenameFilter;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class GuantanamoTaskTest extends MockObjectTestCase {
-    public void testShouldBeAbleToGuantanamiseSeveralSources() {
-        GuantanamoTask task = new GuantanamoTask();
+public class FileComparatorTaskTest extends TestCase {
+    public void testShouldFailOnDifferentDirectories() {
+        FileComparatorTask task = new FileComparatorTask();
         task.setProject(new Project());
-        File cloverXml = new File("target/testdata/clover-reports/clover.xml");
-        assertTrue(cloverXml.isFile());
-        task.setCloverxml(cloverXml);
+        task.setExpected(new File("src/main"));
+        task.setActual(new File("src/test"));
+        try {
+            task.execute();
+            fail();
+        } catch (BuildException expected) {
+        }
+    }
 
-        File dest = new File("target/guantanamo/guantanamoed-src");
-        dest.mkdirs();
-        task.setDest(dest);
-        task.execute();
-
-        final File coreDir = new File("target/guantanamo/guantanamoed-src/org/codehaus/guantanamo");
-        assertTrue(coreDir.isDirectory());
-        assertEquals(16, coreDir.list(new FilenameFilter() {
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".java");
-            }
-        }).length);
+    public void testShouldFailOnDifferentContents() {
+        FileComparatorTask task = new FileComparatorTask();
+        task.setProject(new Project());
+        task.setExpected(new File("src/expected/jcoverage"));
+        task.setActual(new File("src/testdata"));
+        try {
+            task.execute();
+            fail();
+        } catch (BuildException expected) {
+        }
     }
 }

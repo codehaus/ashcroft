@@ -10,23 +10,21 @@
  *****************************************************************************/
 package org.codehaus.guantanamo.clover;
 
-import org.codehaus.guantanamo.LineModifier;
+import org.codehaus.guantanamo.ant.GuantanamoTask;
+import org.codehaus.guantanamo.ant.AbstractAcceptanceTest;
 
-import java.io.IOException;
-import java.io.Writer;
+import java.io.File;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-class PlainLineModifier implements LineModifier {
-    public void write(String line, Writer out, boolean forceRemove) throws IOException {
-        if (!forceRemove) {
-            out.write(line);
-        }
+public class CloverGuantanamoTaskTest extends AbstractAcceptanceTest {
+    protected String getToolName() {
+        return "clover";
     }
 
-    public boolean willRemove(String line) {
-        return false;
+    protected void setProperties(GuantanamoTask task) {
+        task.setClover(new File("target/clover/testdata/coverage-report/clover.xml"));
     }
 }

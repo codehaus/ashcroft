@@ -1,0 +1,6 @@
+<project>
+    <import file="common-targets.xml"/>
+
+    <target name="test-and-coverage-report" depends="compile,jar"/>
+
+</project>

@@ -1,237 +1,79 @@
-<project name="guantanamo" default="full">
+<project name="guantanamo" default="dogfood">
 
-    <!--
-    FULL BUILD PROCESS:
+    <property name="target" value="test-and-coverage-report"/>
 
-    STEP-1 (required to make main tests pass)
-    1) Enable clover for testdata
-    2) Compile testdata
-    3) Run testdata tests
-    4) Generate clover reports for testdata
-
-    STEP-2
-    5) Enable clover for main
-    6) Compile main
-    7) Run main tests
-    8) Generate clover reports for main
-
-    STEP-3
-    9) Compile main without clover
-    10) Run guantanamo task over main
-    11) Assert with ASTTestCase that main is equal to guantanamoed main
-    12) Make a jar of main
-
-    SIMPLE BUILD PROCESS: (If Clover not available)
-
-    1) Compile classes
-    2) Jar them up
-    -->
-    <target name="full" depends="step-1, step-2, step-3"/>
-
-    <import file="clover-tasks.xml"/>
-    <taskdef resource="clovertasks"/>
-    <typedef resource="clovertypes"/>
-
-    <property name="main.src.dir" value="${basedir}/src/main"/>
-    <property name="main.test.src.dir" value="${basedir}/src/test"/>
-    <property name="main.classes.dir" value="${basedir}/target/main/classes"/>
-
-    <property name="testdata.src.dir" value="${basedir}/src/testdata"/>
-    <property name="testdata.classes.dir" value="${basedir}/target/testdata/classes"/>
-
-    <property name="jar.file" value="${basedir}/target/${ant.project.name}.jar"/>
-
-    <target name="compile-main">
-        <mkdir dir="${main.classes.dir}"/>
-        <javac destdir="${main.classes.dir}" debug="on" includeantruntime="true">
-            <src location="${main.src.dir}"/>
-            <src location="${main.test.src.dir}"/>
-            <classpath>
-                <pathelement location="${main.classes.dir}"/>
-                <pathelement location="${basedir}/lib/jmock-1.0.1.jar"/>
-                <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
-                <pathelement location="${basedir}/lib/generama-1.1-SNAPSHOT-20041002.jar"/>
-                <pathelement location="${basedir}/lib/antlr-2.7.2.jar"/>
-                <pathelement location="${basedir}/lib/proxytoys-0.1.jar"/>
-            </classpath>
-        </javac>
-    </target>
-
-    <target name="compile-testdata">
-        <mkdir dir="${testdata.classes.dir}"/>
-        <javac destdir="${testdata.classes.dir}" debug="on">
-            <src location="${testdata.src.dir}"/>
-        </javac>
-    </target>
-
-    <target name="step-1">
-        <exec executable="ant.bat">
-            <arg value="-Dparam-clover-report-dir=${basedir}/target/testdata/clover-reports"/>
-            <arg value="run-testdata-tests-with-clover"/>
-        </exec>
-    </target>
-
-    <target name="run-testdata-tests-with-clover" depends="clover-init-generic, run-testdata-tests, clover-report-generic"/>
-
-    <target name="run-testdata-tests" depends="compile-testdata">
-        <ant antfile="build.xml" target="run-tests-generic">
-            <property name="param-classes-dir" value="${testdata.classes.dir}"/>
-            <property name="param-test-src-dir" value="${testdata.src.dir}"/>
-            <property name="param-test-log-dir" value="${basedir}/target/testdata/test-logs"/>
-            <property name="param-test-report-dir" value="${basedir}/target/testdata/test-reports"/>
-            <property name="param-clover-report-dir" value="${basedir}/target/testdata/clover-reports"/>
-        </ant>
-    </target>
-
-
-    <target name="step-2">
-        <exec executable="ant.bat">
-            <arg value="-Dparam-clover-report-dir=${basedir}/target/main/clover-reports"/>
-            <arg value="-Dparam-test-exclude=**/DogFoodTest.java"/>
-            <arg value="run-main-tests-with-clover"/>
-        </exec>
-    </target>
-
-    <target name="run-main-tests-with-clover" depends="clover-init-generic, run-main-tests, clover-report-generic"/>
-
-    <target name="run-main-tests" depends="compile-main">
-        <ant antfile="build.xml" target="run-tests-generic">
-            <property name="param-classes-dir" value="${main.classes.dir}"/>
-            <property name="param-test-src-dir" value="${main.test.src.dir}"/>
-            <property name="param-test-log-dir" value="${basedir}/target/main/test-logs"/>
-            <property name="param-test-report-dir" value="${basedir}/target/main/test-reports"/>
-            <property name="param-clover-report-dir" value="${basedir}/target/main/clover-reports"/>
-            <property name="param-test-exclude" value="${param-test-exclude}"/>
-        </ant>
-    </target>
-
-
-    <target name="run-tests-generic">
-
-        <mkdir dir="${param-test-log-dir}"/>
-        <junit fork="yes" forkmode="once" printsummary="yes" failureproperty="tests.failed">
-            <jvmarg value="-Dclover.dir=${param-clover-report-dir}"/>
-            <classpath>
-                <pathelement location="${param-classes-dir}"/>
-                <pathelement location="${basedir}/lib/jmock-1.0.1.jar"/>
-                <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
-                <pathelement location="${basedir}/lib/generama-1.1-SNAPSHOT-20041002.jar"/>
-                <pathelement location="${basedir}/lib/antlr-2.7.2.jar"/>
-                <pathelement location="${basedir}/lib/proxytoys-0.1.jar"/>
-                <pathelement location="${ant.home}/lib/clover-1.1.1.jar"/>
-                <pathelement location="${ant.home}/src/test"/>
-            </classpath>
-            <formatter type="xml"/>
-            <formatter type="plain"/>
-            <batchtest todir="${param-test-log-dir}">
-                <fileset dir="${param-test-src-dir}">
-                    <include name="**/*Test.java"/>
-                    <exclude name="${param-test-exclude}"/>
-                </fileset>
-            </batchtest>
-        </junit>
-
-        <mkdir dir="${param-test-report-dir}"/>
-        <junitreport todir="${param-test-report-dir}">
-            <fileset dir="${param-test-log-dir}">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report format="frames" todir="${param-test-report-dir}" styledir="${ant.home}/etc"/>
-        </junitreport>
-
-        <fail if="tests.failed">There were test failures</fail>
-
-    </target>
-
-    <target name="clover-init-generic" if="param-clover-report-dir">
-        <mkdir dir="${param-clover-report-dir}"/>
-        <clover-setup initString="${param-clover-report-dir}/testCoverage.db">
-            <files>
-                <!-- exclude test-related classes, because they generally inflate the average. -->
-                <exclude name="**/*Test.java"/>
-            </files>
-        </clover-setup>
-    </target>
-
-    <target name="clover-report-generic" if="param-clover-report-dir">
-        <clover-report>
-            <current summary="yes" outfile="${param-clover-report-dir}">
-                <format type="html"/>
-            </current>
-            <current summary="yes" outfile="${param-clover-report-dir}/clover.xml">
-                <format type="xml"/>
-            </current>
-        </clover-report>
-    </target>
-
-    <target name="assert-tests-passed" depends="run-main-tests" if="tests.failed">
-        <fail>There were test failures</fail>
-    </target>
-
-    <target name="clean" description="Clean up the output directories">
-        <delete dir="${basedir}/target"/>
-    </target>
-
-    <target name="step-3">
-        <antcall target="compile-main">
-            <param name="main.classes.dir" value="${basedir}/target/main/classes-no-clover"/>
+    <target name="testdata">
+        <antcall target="-build">
+            <param name="tool" value="clover"/>
+            <param name="src" value="testdata"/>
+            <param name="test" value="testdata"/>
         </antcall>
 
+        <antcall target="-build">
+            <param name="tool" value="jcoverage"/>
+            <param name="src" value="testdata"/>
+            <param name="test" value="testdata"/>
+        </antcall>
+    </target>
+
+    <target name="main" depends="testdata">
+        <antcall target="-build">
+            <param name="tool" value="clover"/>
+            <param name="src" value="main"/>
+            <param name="test" value="test"/>
+        </antcall>
+
+        <antcall target="-build">
+            <param name="tool" value="jcoverage"/>
+            <param name="src" value="main"/>
+            <param name="test" value="test"/>
+        </antcall>
+    </target>
+
+    <target name="dogfood" depends="main">
         <taskdef name="guantanamo" classname="org.codehaus.guantanamo.ant.GuantanamoTask">
             <classpath>
-                <pathelement location="${basedir}/target/main/classes-no-clover"/>
+                <pathelement location="target/jcoverage/main/classes"/>
                 <pathelement location="lib/xpp3-1.1.2a.jar"/>
             </classpath>
         </taskdef>
-
-        <mkdir dir="target/main/guantanamoed-src"/>
-        <guantanamo cloverxml="target/main/clover-reports/clover.xml" dest="target/main/guantanamoed-src"/>
-
-        <!--
-        Verify with ASTTestCase (via DogFoodTest) that original and guantanamoed sources are identical
-        "nada" means that no tests (e.g. DogFoodTest) are excluded this time.
-        -->
-        <antcall target="run-main-tests">
-            <param name="main.classes.dir" value="${basedir}/target/main/classes-no-clover"/>
-            <param name="param-test-exclude" value="nada"/>
-        </antcall>
-
-        <jar basedir="${basedir}/target/main/classes-no-clover" destfile="${jar.file}">
-            <exclude name="**/*Test.class"/>
-        </jar>
-    </target>
-
-    <target name="simple-build">
-        <antcall target="compile-main">
-            <param name="main.classes.dir" value="${basedir}/target/main/classes-no-clover"/>
-        </antcall>
-
-        <copy file="${basedir}/LICENSE.txt" todir="${basedir}/target/main/classes-no-clover"/>
-
-        <jar basedir="${basedir}/target/main/classes-no-clover" destfile="${jar.file}">
-            <exclude name="**/*Test.class"/>
-        </jar>
-    </target>
-
-    <!-- This could be linked to from the Confluence docs once raw text download is supported by ViewCVS/Fisheye -->
-
-    <property name="guantanamo.jar.file" value="${jar.file}"/>
-    <property name="xpp3.jar.file" value="lib/xpp3-1.1.2a.jar"/>
-
-    <!-- START SNIPPET: ant-example -->
-    <target name="guantanamo">
-        <taskdef name="guantanamo" classname="org.codehaus.guantanamo.ant.GuantanamoTask">
+        <taskdef name="compare" classname="org.codehaus.guantanamo.ant.FileComparatorTask">
             <classpath>
-                <pathelement location="${guantanamo.jar.file}"/>
-                <pathelement location="${xpp3.jar.file}"/>
+                <pathelement location="target/jcoverage/main/classes"/>
             </classpath>
         </taskdef>
 
-        <mkdir dir="target/main/guantanamoed-src"/>
+        <guantanamo
+            clover="target/clover/main/coverage-report/clover.xml"
+            dest="target/clover/guantanamo"/>
+        <compare expected="src/main" actual="target/clover/guantanamo"/>
 
         <guantanamo
-            cloverxml="target/main/clover-reports/clover.xml"
-            dest="target/main/guantanamoed-src"/>
+            jcoverage="target/jcoverage/main/coverage-report/coverage.xml"
+            dest="target/jcoverage/guantanamo"/>
+        <compare expected="src/main" actual="target/jcoverage/guantanamo"/>
+
+        <antcall target="jar"/>
     </target>
-    <!-- END SNIPPET: ant-example -->
+
+    <target name="jar">
+        <antcall target="-build">
+            <param name="tool" value="dist"/>
+            <param name="src" value="main"/>
+            <param name="test" value="test"/>
+        </antcall>
+    </target>
+
+    <target name="-build">
+        <property name="param.dest" value="target/${tool}/${src}"/>
+        <ant antfile="${tool}-targets.xml" target="${target}" >
+            <property name="param.src.dir" value="src/${src}" />
+            <property name="param.test.src.dir" value="src/${test}" />
+            <property name="param.classes.dir" value="${param.dest}/classes" />
+            <property name="param.instrumented.classes.dir" value="${param.dest}/instrumented-classes" />
+            <property name="param.test.log.dir" value="${param.dest}/test-logs" />
+            <property name="param.test.report.dir" value="${param.dest}/test-report" />
+            <property name="param.coverage.report.dir" value="${param.dest}/coverage-report" />
+        </ant>
+    </target>
 </project>

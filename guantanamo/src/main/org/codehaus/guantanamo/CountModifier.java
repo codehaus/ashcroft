@@ -31,6 +31,10 @@ public class CountModifier implements LineModifier {
     }
 
     public boolean willRemove(String line) {
-        return count == 0;
+        // Sometimes JCoverage reports 0 coverage for closing braces.
+        // See the report for FileComparatorTask
+        // target/jcoverage/main/coverage-report/org.codehaus.guantanamo.ant.FileComparatorTask.html
+        boolean uncoveredClosingCurlyBrace = !"}".equals(line.trim());
+        return count == 0 && uncoveredClosingCurlyBrace;
     }
 }

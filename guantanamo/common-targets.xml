@@ -1,0 +1,49 @@
+<project>
+
+    <target name="compile">
+        <mkdir dir="${param.classes.dir}"/>
+        <javac destdir="${param.classes.dir}" debug="on" includeantruntime="true">
+            <src location="${param.src.dir}"/>
+            <src location="${param.test.src.dir}"/>
+            <classpath>
+                <fileset dir="lib"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar basedir="${param.classes.dir}" file="target/guantanamo.jar"/>
+    </target>
+
+    <target name="test">
+        <mkdir dir="${param.test.log.dir}"/>
+        <junit fork="yes" forkmode="once" printsummary="yes" failureproperty="tests.failed">
+            <classpath>
+                <pathelement location="${param.instrumented.classes.dir}"/>
+                <pathelement location="${param.classes.dir}"/>
+                <pathelement location="${ant.home}/lib/clover-1.1.1.jar"/>
+                <fileset dir="lib"/>
+            </classpath>
+            <formatter type="xml"/>
+            <formatter type="plain"/>
+            <batchtest todir="${param.test.log.dir}">
+                <fileset dir="${param.test.src.dir}">
+                    <include name="**/*Test.java"/>
+                    <exclude name="**/Abstract*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <mkdir dir="${param.test.report.dir}"/>
+        <junitreport todir="${param.test.report.dir}">
+            <fileset dir="${param.test.log.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${param.test.report.dir}" styledir="${ant.home}/etc"/>
+        </junitreport>
+    </target>
+
+    <target name="assert-tests-passed">
+        <fail if="tests.failed">There were test failures</fail>
+    </target>
+</project>

@@ -32,7 +32,7 @@ public class LineReader extends FilterReader {
     }
 
     public LineReader(URL url) throws IOException {
-        super(new InputStreamReader(url.openStream()));
+        this(new InputStreamReader(url.openStream()));
     }
 
     /**

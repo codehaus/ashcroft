@@ -8,21 +8,23 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo.testdata;
+package org.codehaus.guantanamo;
+
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class PoorlyTested {
-    public void methodWithUncoveredSimpleIfs() {
-        boolean b = true;
-        int i = 1;
+public class PlainLineModifier implements LineModifier {
+    public void write(String line, Writer out, boolean forceRemove) throws IOException {
+        if (!forceRemove) {
+            out.write(line);
+        }
     }
 
-    public void methodWithStatementInIf(String s) {
-		if(s.trim().equals("a")) {
-			new Object();
-		}
-	}
+    public boolean willRemove(String line) {
+        return false;
+    }
 }

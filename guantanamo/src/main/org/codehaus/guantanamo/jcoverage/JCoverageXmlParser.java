@@ -8,17 +8,16 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo.clover;
+package org.codehaus.guantanamo.jcoverage;
 
 import org.codehaus.guantanamo.CountModifier;
 import org.codehaus.guantanamo.LineModifier;
 import org.codehaus.guantanamo.LineModifierProvider;
+import org.codehaus.guantanamo.PlainLineModifier;
 import org.codehaus.guantanamo.SourceFinder;
 import org.codehaus.guantanamo.SourceRootFinder;
 import org.codehaus.guantanamo.SourceVisitor;
-import org.codehaus.guantanamo.TrueFalseCountModifier;
 import org.codehaus.guantanamo.URLLine;
-import org.codehaus.guantanamo.PlainLineModifier;
 import org.codehaus.guantanamo.GuantanamoException;
 import org.xmlpull.mxp1.MXParser;
 import org.xmlpull.v1.XmlPullParser;
@@ -38,20 +37,19 @@ import java.util.Map;
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class CloverXmlParser implements SourceFinder, LineModifierProvider, SourceRootFinder {
+public class JCoverageXmlParser implements SourceFinder, LineModifierProvider, SourceRootFinder {
     private final LineModifier notModifyingLineModifier = new PlainLineModifier();
     private final MXParser parser = new MXParser();
 
-    private final Map lineModifiers = new HashMap();
     private final List sourceURLs = new ArrayList();
+    private final Map lineModifiers = new HashMap();
 
-    private String fileName;
     private URL sourceRoot;
-    private String packageName;
+    private URL sourceURL;
 
-    public CloverXmlParser(Reader cloverXml) throws IOException {
+    public JCoverageXmlParser(Reader coverageXml) throws IOException {
         try {
-            parser.setInput(cloverXml);
+            parser.setInput(coverageXml);
             parseDocument();
         } catch (XmlPullParserException e) {
             throw new GuantanamoException(e.getMessage());
@@ -64,32 +62,21 @@ public class CloverXmlParser implements SourceFinder, LineModifierProvider, Sour
             final String tagName = parser.getName();
             switch (event) {
                 case XmlPullParser.START_TAG:
-                    if ("package".equals(parser.getName())) {
-                        packageName = parser.getAttributeValue(null, "name");
+                    if ("coverage".equals(parser.getName())) {
+                        sourceRoot = new File(parser.getAttributeValue(null, "src")).toURL();
                     } else if ("file".equals(parser.getName())) {
-                        fileName = parser.getAttributeValue(null, "name");
-                        sourceURLs.add(new File(fileName).toURL());
-
-                        // determine the source root
-                        if (sourceRoot == null) {
-                            String packagePath = packageName.replace('.', File.separatorChar);
-                            int sourceRootPathEnd = fileName.indexOf(packagePath);
-                            String sourceRootPath = fileName.substring(0, sourceRootPathEnd);
-                            sourceRoot = new File(sourceRootPath).toURL();
-                        }
+                        String fileName = parser.getAttributeValue(null, "name");
+                        sourceURL = new File(sourceRoot.getFile(), fileName).toURL();
+                        sourceURLs.add(sourceURL);
                     } else if ("line".equals(tagName)) {
-                        int lineNumber = Integer.parseInt(parser.getAttributeValue(null, "num"));
-                        String count = parser.getAttributeValue(null, "count");
-                        String truecount = parser.getAttributeValue(null, "truecount");
-                        String falsecount = parser.getAttributeValue(null, "falsecount");
-                        LineModifier lineModifier = null;
-                        if (count != null) {
-                            lineModifier = new CountModifier(Integer.parseInt(count));
-                        } else {
-                            lineModifier = new TrueFalseCountModifier(Integer.parseInt(truecount), Integer.parseInt(falsecount));
+                        final String ln = parser.getAttributeValue(null, "number");
+                        if (ln != null) {
+                            int lineNumber = Integer.parseInt(ln);
+                            final int hits = Integer.parseInt(parser.getAttributeValue(null, "hits"));
+                            LineModifier lineModifier = new CountModifier(hits);
+                            URLLine URLLine = new URLLine(sourceURL, lineNumber);
+                            lineModifiers.put(URLLine, lineModifier);
                         }
-                        URLLine URLLine = new URLLine(new File(fileName).toURL(), lineNumber);
-                        lineModifiers.put(URLLine, lineModifier);
                     }
                     continue;
                 case XmlPullParser.END_TAG:
@@ -102,8 +89,8 @@ public class CloverXmlParser implements SourceFinder, LineModifierProvider, Sour
 
     public void accept(SourceVisitor sourceVisitor) throws IOException {
         for (Iterator iterator = sourceURLs.iterator(); iterator.hasNext();) {
-            final URL source = (URL) iterator.next();
-            sourceVisitor.visitSource(source);
+            URL sourceURL = (URL) iterator.next();
+            sourceVisitor.visitSource(sourceURL);
         }
     }
 
@@ -120,5 +107,4 @@ public class CloverXmlParser implements SourceFinder, LineModifierProvider, Sour
     public URL getSourceRootURL() {
         return sourceRoot;
     }
-
 }

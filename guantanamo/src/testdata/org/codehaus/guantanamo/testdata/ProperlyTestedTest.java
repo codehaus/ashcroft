@@ -19,7 +19,23 @@ import junit.framework.TestCase;
 public class ProperlyTestedTest extends TestCase {
     private ProperlyTested properlyTested = new ProperlyTested();
 
-    public void testShouldHaveSimpleIfsRemoved() {
-        properlyTested.whatever();
+    public void testShouldThrowIllegalArgumentExceptionForNull() {
+        try {
+            properlyTested.doit(null);
+            fail();
+        } catch (IllegalArgumentException expected) {
+        }
+    }
+
+    public void testShouldThrowUnsupportedOperationExceptionForText() {
+        try {
+            properlyTested.doit("blah");
+            fail();
+        } catch (UnsupportedOperationException expected) {
+        }
+    }
+
+    public void testShouldConvertToNumber() {
+        assertEquals(432, properlyTested.doit("432"));
     }
 }

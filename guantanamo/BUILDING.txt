@@ -1,14 +1,14 @@
 There are two ways to build Guantanamo:
 
-1) FULL BUILD
-Put your clover 1.1.1 in your $ANT_HOME/lib folder (I haven't tested with any newer versions)
-Then just run ant (the default target)
+1) DOGFOOD
+This will build Guantanamo, run the full test suite and run itself over its own source code. The final step is to verify that no
+source code was deleted - i.e. 100% test coverage.
 
-This will run the entire acceptance test suite and self-validation, i.e. running Guantanamo over itself
-and verifying that no code was deleted. (The test suite uses a nifty ASTTestCase to compare the
-original and guantanamoed sources - it's similar to XMLUnit, but works with Java Source code).
+1.1) Put your clover 1.1.1 or higher in your $ANT_HOME/lib folder (I haven't tested with any newer versions)
+1.2) Put JCoverage and all its dependencies in the ./lib folder
+1.3) ant dogfood
 
-At the end of the build you should get a target/guantanamo.jar file.
+2) JAR
+This will build the target/dist/guantanamo.jar file. None of the test coverage tool jars need to be present.
 
-2) SIMPLE BUILD
-Just run ant simple-build. This will create a target/guantanamo.jar file.
+1.1) ant jar

@@ -12,6 +12,7 @@ package org.codehaus.guantanamo;
 
 import org.codehaus.guantanamo.clover.CloverXmlParser;
 import org.codehaus.guantanamo.io.LineReader;
+import org.codehaus.guantanamo.jcoverage.JCoverageXmlParser;
 
 import java.io.File;
 import java.io.FileReader;
@@ -30,10 +31,16 @@ public class Guantanamo implements SourceModifier {
     private final Monitor monitor;
     private Stack blocks = new Stack();
 
-    public static void runWithClover(File cloverXml, File destinationFolder, Monitor monitor) throws IOException {
+    public static void runWithClover(File cloverXml, File destDir, Monitor monitor) throws IOException {
         CloverXmlParser cloverXmlParser = new CloverXmlParser(new FileReader(cloverXml));
         Guantanamo guantanamo = new Guantanamo(cloverXmlParser, monitor);
-        cloverXmlParser.accept(new ModifyingSourceVisitor(guantanamo, cloverXmlParser, destinationFolder.toURL()));
+        cloverXmlParser.accept(new ModifyingSourceVisitor(guantanamo, cloverXmlParser, destDir.toURL()));
+    }
+
+    public static void runWithJCoverage(File jcoverage, File destDir, Monitor monitor) throws IOException {
+        JCoverageXmlParser JCoverageXmlParser = new JCoverageXmlParser(new FileReader(jcoverage));
+        Guantanamo guantanamo = new Guantanamo(JCoverageXmlParser, monitor);
+        JCoverageXmlParser.accept(new ModifyingSourceVisitor(guantanamo, JCoverageXmlParser, destDir.toURL()));
     }
 
     public Guantanamo(LineModifierProvider lineModifierProvider, Monitor monitor) {

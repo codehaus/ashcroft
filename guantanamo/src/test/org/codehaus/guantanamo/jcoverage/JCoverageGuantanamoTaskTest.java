@@ -8,21 +8,23 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo;
+package org.codehaus.guantanamo.jcoverage;
 
-import antlr.RecognitionException;
-import antlr.TokenStreamException;
-import org.generama.astunit.ASTTestCase;
+import org.codehaus.guantanamo.ant.GuantanamoTask;
+import org.codehaus.guantanamo.ant.AbstractAcceptanceTest;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class DogFoodTest extends ASTTestCase {
-    public void testShouldHaveIdenticalSourcesToOurOwnGuantanamoedSources() throws IOException, TokenStreamException, RecognitionException {
-        assertSourceTreeEquals(new File("target/main/guantanamoed-src"), new File("src/main"));
+public class JCoverageGuantanamoTaskTest extends AbstractAcceptanceTest {
+    protected String getToolName() {
+        return "jcoverage";
+    }
+
+    protected void setProperties(GuantanamoTask task) {
+        task.setJcoverage(new File("target/jcoverage/testdata/coverage-report/coverage.xml"));
     }
 }

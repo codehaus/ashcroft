@@ -1,0 +1,35 @@
+<project>
+    <import file="common-targets.xml"/>
+
+    <taskdef resource="tasks.properties">
+        <classpath>
+            <fileset dir="lib"/>
+        </classpath>
+    </taskdef>
+
+    <target name="test-and-coverage-report" depends="init,compile,test,coverage-report,assert-tests-passed"/>
+
+    <target name="init">
+        <taskdef resource="clovertasks"/>
+        <typedef resource="clovertypes"/>
+
+        <mkdir dir="${param.coverage.report.dir}"/>
+        <clover-setup initString="${param.coverage.report.dir}/testCoverage.db">
+            <files>
+                <!-- exclude test-related classes, because they generally inflate the average. -->
+                <exclude name="**/*Test.java"/>
+            </files>
+        </clover-setup>
+    </target>
+
+    <target name="coverage-report">
+        <clover-report>
+            <current summary="yes" outfile="${param.coverage.report.dir}">
+                <format type="html"/>
+            </current>
+            <current summary="yes" outfile="${param.coverage.report.dir}/clover.xml">
+                <format type="xml"/>
+            </current>
+        </clover-report>
+    </target>
+</project>

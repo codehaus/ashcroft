@@ -1,0 +1,34 @@
+<project>
+    <import file="common-targets.xml"/>
+
+    <taskdef resource="tasks.properties">
+        <classpath>
+            <fileset dir="lib"/>
+        </classpath>
+    </taskdef>
+
+    <target name="test-and-coverage-report" depends="init,compile,instrument,test,coverage-report,assert-tests-passed"/>
+
+    <target name="init">
+        <delete file="jcoverage.ser"/>
+        <delete dir="${param.instrumented.classes.dir}"/>
+        <delete dir="${param.classes.dir}"/>
+    </target>
+
+    <target name="instrument">
+        <instrument todir="${param.instrumented.classes.dir}">
+            <fileset dir="${param.classes.dir}">
+                <include name="**/*.class"/>
+                <exclude name="**/*Test.class"/>
+            </fileset>
+        </instrument>
+    </target>
+
+    <target name="coverage-report">
+        <report srcdir="${param.src.dir}" destdir="${param.coverage.report.dir}"/>
+        <report srcdir="${param.src.dir}" destdir="${param.coverage.report.dir}" format="xml"/>
+
+        <!-- Due to a bug in JCoverage - the coverage.xml must be fixed -->
+        <replace file="${param.coverage.report.dir}/coverage.xml" token="&lt;init&gt;" value="&amp;lt;init&amp;gt;"/>
+    </target>
+</project>
