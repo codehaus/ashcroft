@@ -32,7 +32,6 @@
     </target>
 
     <target name="test" depends="compile-tests, copy-test-sources">
-        <echo>${ant.home}/lib/xercesImpl.jar</echo>
         <mkdir dir="target/test-reports"/>
         <junit printsummary="yes" failureproperty="tests.failed">
             <formatter type="plain"/>
@@ -40,11 +39,14 @@
                 <pathelement location="target/classes"/>
                 <pathelement location="target/test-classes"/>
                 <pathelement location="lib/qdox-1.6-SNAPSHOT.jar"/>
+                <pathelement location="lib/pja-2.5.jar"/>
                 <!-- These two are needed in order to build on JDK1.3 -->
                 <pathelement location="${ant.home}/lib/xercesImpl.jar"/>
                 <pathelement location="${ant.home}/lib/xml-apis.jar"/>
             </classpath>
- 
+
+            <!-- See http://jira.codehaus.org/browse/ASH-3 -->
+            <jvmarg value="-Dawt.toolkit=com.eteks.awt.PJAToolkit"/>
             <jvmarg value="-Djava.security.manager=com.thoughtworks.ashcroft.runtime.JohnAshcroft"/>
             <batchtest fork="yes" todir="target/test-reports">
                 <fileset dir="src/test">
