@@ -53,10 +53,10 @@ public class Guantanamo implements SourceModifier {
             SourceAnalysis sourceAnalysis = analyseLine(line, willBeRemoved);
 
             boolean forceRemove = false;
-            if(sourceAnalysis.isOpenBlock()) {
+            if (sourceAnalysis.isOpenBlock()) {
                 blocks.push(sourceAnalysis);
             }
-            if(sourceAnalysis.isCloseBlock()) {
+            if (sourceAnalysis.isCloseBlock()) {
                 SourceAnalysis openBlock = (SourceAnalysis) blocks.pop();
                 forceRemove = openBlock.wasRemoved();
             }
@@ -68,9 +68,9 @@ public class Guantanamo implements SourceModifier {
     }
 
     private SourceAnalysis analyseLine(String line, boolean removed) {
-        if(line.trim().endsWith("{")) {
+        if (line.trim().endsWith("{")) {
             return new OpenBlock(removed);
-        } else if(line.trim().endsWith("}")) {
+        } else if (line.trim().endsWith("}")) {
             return new CloseBlock(removed);
         } else {
             return new PlainCode(removed);

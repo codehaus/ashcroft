@@ -14,13 +14,12 @@ import org.codehaus.guantanamo.SourceFinder;
 import org.codehaus.guantanamo.SourceVisitor;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
-import org.jmock.core.Constraint;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.net.URL;
 
 /**
  * @author Aslak Helles&oslash;y
@@ -28,26 +27,12 @@ import java.net.URL;
  */
 public class CloverXmlParserTest extends MockObjectTestCase {
     public void testShouldIdentifyUntestedLinesAsPoliticallyIncorrect() throws IOException, XmlPullParserException {
-        Reader cloverXml = new FileReader("target/clover.xml");
+        Reader cloverXml = new FileReader(new File("target/testdata/clover-reports/clover.xml"));
         SourceFinder finder = new CloverXmlParser(cloverXml);
         Mock sourceVisitor = mock(SourceVisitor.class);
-        expectVisitSourceTimes(sourceVisitor, 21);
+        sourceVisitor.expects(once()).method("visitSource").with(eq(new File("src/testdata/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL())).isVoid();
+        sourceVisitor.expects(once()).method("visitSource").with(eq(new File("src/testdata/org/codehaus/guantanamo/testdata/ProperlyTested.java").toURL())).isVoid();
 
         finder.accept((SourceVisitor) sourceVisitor.proxy());
-    }
-
-    private void expectVisitSourceTimes(Mock sourceVisitor, int numberOfSources) {
-        for (int i = 0; i < numberOfSources; i++) {
-            sourceVisitor.expects(once()).method("visitSource").with(new Constraint() {
-                public boolean eval(Object o) {
-                    URL url = (URL) o;
-                    return url.getFile().indexOf("src/main/org/codehaus/guantanamo") != -1;
-                }
-
-                public StringBuffer describeTo(StringBuffer stringBuffer) {
-                    return stringBuffer.append("The URL should have contained src/main/org/codehaus/guantanamo");
-                }
-            }).isVoid();
-        }
     }
 }

@@ -8,15 +8,18 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo;
+package org.codehaus.guantanamo.testdata;
+
+import junit.framework.TestCase;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class PoorlyTested {
-    public void methodWithUncoveredSimpleIfs() {
-        boolean b = true;
-        int i = 1;
+public class ProperlyTestedTest extends TestCase {
+    private ProperlyTested properlyTested = new ProperlyTested();
+
+    public void testShouldHaveSimpleIfsRemoved() {
+        properlyTested.whatever();
     }
 }

@@ -1,26 +1,4 @@
 <project>
-    <taskdef resource="clovertasks"/>
-    <typedef resource="clovertypes"/>
 
-    <target name="clover-init" if="with.clover" description="Create the report directories">
-        <mkdir dir="${basedir}/target/clover"/>
-        <clover-setup initString="${basedir}/target/clover/testCoverage.db">
-            <files>
-                <!-- exclude test-related classes, because they generally inflate the average. -->
-                <exclude name="**/*Test.java"/>
-            </files>
-        </clover-setup>
-    </target>
-
-    <target name="clover-report" depends="clover-init, run-tests" description="Generate the coverage report">
-        <clover-report>
-            <current summary="yes" outfile="${basedir}/target/clover">
-                <format type="html"/>
-            </current>
-            <current summary="yes" outfile="${basedir}/target/clover.xml">
-                <format type="xml"/>
-            </current>
-        </clover-report>
-    </target>
 
 </project>

@@ -24,21 +24,22 @@ public class GuantanamoTaskTest extends MockObjectTestCase {
     public void testShouldBeAbleToGuantanamiseSeveralSources() {
         GuantanamoTask task = new GuantanamoTask();
         task.setProject(new Project());
-        File clover = new File("target/clover.xml");
-        task.setCloverxml(clover);
+        File cloverXml = new File("target/testdata/clover-reports/clover.xml");
+        assertTrue(cloverXml.isFile());
+        task.setCloverxml(cloverXml);
 
-        File dest = new File("target/guantanamo");
+        File dest = new File("target/guantanamo/guantanamoed-src");
         dest.mkdirs();
         task.setDest(dest);
         task.execute();
 
-        if(System.getProperty("with.clover") == null) {
-            assertEquals(17, new File("target/guantanamo/org/codehaus/guantanamo").list(new FilenameFilter(){
-                public boolean accept(File dir, String name) {
-                    return name.endsWith(".java");
-                }
-            }).length);
-        }
+        final File coreDir = new File("target/guantanamo/guantanamoed-src/org/codehaus/guantanamo");
+        assertTrue(coreDir.isDirectory());
+        assertEquals(16, coreDir.list(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".java");
+            }
+        }).length);
     }
 
 

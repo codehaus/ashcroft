@@ -25,12 +25,10 @@ import java.net.URL;
  */
 public class AcceptanceTest extends ASTTestCase {
     public void testShouldRemoveLinesAndLeaveSourceInComplingState() throws IOException, XmlPullParserException, TokenStreamException, RecognitionException {
-        if (System.getProperty("with.clover") == null) {
-            File cloverXml = new File("target/clover.xml");
-            Guantanamo.runWithClover(cloverXml, new File("target/guantanamo"));
-            final URL expected = new File("src/expected/org/codehaus/guantanamo/PoorlyTested.java").toURL();
-            final URL actual = new File("target/guantanamo/org/codehaus/guantanamo/PoorlyTested.java").toURL();
-            assertAstEquals(expected, actual);
-        }
+        File cloverXml = new File("target/testdata/clover-reports/clover.xml");
+        Guantanamo.runWithClover(cloverXml, new File("target/testdata/guantanamoed-src"));
+        final URL expected = new File("src/expected/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
+        final URL guantanamoed = new File("target/testdata/guantanamoed-src/org/codehaus/guantanamo/testdata/PoorlyTested.java").toURL();
+        assertAstEquals(expected, guantanamoed);
     }
 }

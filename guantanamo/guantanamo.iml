@@ -10,8 +10,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/expected" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testdata" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.clover" />
       <excludeFolder url="file://$MODULE_DIR$/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/expected" />
+      <excludeFolder url="file://$MODULE_DIR$/src/testdata" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -24,7 +27,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/generama-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/antlr-2.7.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -33,7 +36,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/antlr-2.7.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/generama-1.1-SNAPSHOT-20041002.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

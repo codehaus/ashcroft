@@ -10,15 +10,19 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
-import junit.framework.TestCase;
+import antlr.RecognitionException;
+import antlr.TokenStreamException;
+import org.generama.astunit.ASTTestCase;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class PoorlyTestedTest extends TestCase {
-    public void testShouldHaveSimpleIfsRemoved() {
-        PoorlyTested poorlyTested = new PoorlyTested();
-        poorlyTested.methodWithUncoveredSimpleIfs();
+public class DogFoodTest extends ASTTestCase {
+    public void testShouldHaveIdenticalSourcesToOurOwnGuantanamoedSources() throws IOException, TokenStreamException, RecognitionException {
+        assertSourceTreeEquals(new File("target/main/guantanamoed-src"), new File("src/main"));
     }
 }

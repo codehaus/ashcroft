@@ -8,36 +8,13 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo;
-
-import java.io.IOException;
-import java.io.Writer;
+package org.codehaus.guantanamo.testdata;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class TrueFalseCountModifier implements LineModifier {
-    private final int trueCount;
-    private final int falseCount;
-
-    public TrueFalseCountModifier(int trueCount, int falseCount) {
-        this.trueCount = trueCount;
-        this.falseCount = falseCount;
-    }
-
-    public void write(String line, Writer out, boolean forceRemove) throws IOException {
-        if(!willRemove(line) && !forceRemove) {
-            out.write(line);
-        }
-    }
-
-    public boolean willRemove(String line) {
-        final boolean hasOneZeroCoverage = trueCount == 0 || falseCount == 0;
-        return hasOneZeroCoverage && isIf(line);
-    }
-
-    private boolean isIf(String line) {
-        return line.trim().startsWith("if");
+public class ProperlyTested {
+    public void whatever() {
     }
 }

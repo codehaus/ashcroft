@@ -11,6 +11,7 @@
 package org.codehaus.guantanamo;
 
 import java.io.IOException;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -39,7 +40,9 @@ public class ModifyingSourceVisitor implements SourceVisitor {
         String sourcePath = source.toExternalForm();
         String relativeSourcePath = sourcePath.substring(sourceRootPath.length());
 
-        URL out = new URL(destinationRootURL.toString() + relativeSourcePath);
+        final File outRootDir = new File(destinationRootURL.getFile());
+        File outFile = new File(outRootDir, relativeSourcePath);
+        URL out = outFile.toURL();
         return out;
     }
 }
