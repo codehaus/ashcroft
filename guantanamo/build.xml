@@ -1,0 +1,29 @@
+<project name="guantanamo" default="jar">
+    <target name="compile" description="Compile java source">
+        <property name="compile.src" value="${basedir}/src/main"/>
+        <property name="clover.dest" value="${basedir}/target/clover"/>
+        <property name="compile.dest" value="${basedir}/target/classes"/>
+        <property name="jar.file" value="${basedir}/target/${ant.project.name}.jar"/>
+
+        <mkdir dir="${compile.dest}"/>
+        <javac destdir="${compile.dest}" debug="on" includeantruntime="true">
+            <src location="${compile.src}"/>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile" description="Jar java classes">
+        <jar basedir="${basedir}/target/classes" destfile="${jar.file}"/>
+    </target>
+
+    <target name="clean" description="Clean up the output directories">
+        <delete dir="${basedir}/target"/>
+    </target>
+
+    <!-- we like our own dog food -->
+    <target name="guantanamo" depends="compile">
+        <taskdef name="guantanamo" classname="org.codehaus.guantanamo.GuantanamoTask" classpath="${compile.dest}" />
+        <guantanamo dir="${compile.src}" clover="${clover.dest}">
+            <include name="**/*.java"/>
+        </guantanamo>
+    </target>
+</project>
