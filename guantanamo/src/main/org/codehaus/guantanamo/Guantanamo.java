@@ -9,5 +9,5 @@ import java.io.IOException;
  * @version $Revision$
  */
 public interface Guantanamo {
-    void scrutinise(Reader original, Writer output) throws IOException;
+    void removeBadness(Reader original, Writer output) throws IOException;
 }

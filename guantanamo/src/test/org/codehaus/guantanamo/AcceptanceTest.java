@@ -28,7 +28,7 @@ public class AcceptanceTest extends TestCase {
         InputStream qdoxJavaClass = getClass().getResourceAsStream("JavaClass.javax");
         Guantanamo guantanamo = new DefaultGuantanamo(new CoverageRegime(new CloverInvestigator(new InputStreamReader(qdoxJavaClassCoverage))));
         Writer out = new PrintWriter(System.out);
-        guantanamo.scrutinise(new InputStreamReader(qdoxJavaClass), out);
+        guantanamo.removeBadness(new InputStreamReader(qdoxJavaClass), out);
         out.flush();
     }
 }

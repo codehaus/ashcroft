@@ -43,7 +43,7 @@ public class DefaultGuantanamoTest extends MockObjectTestCase{
         regime.expects(once()).method("regimify").with(eq("three\n"), eq(3)).will(returnValue("three\n"));
 
         Guantanamo guantanamo = new DefaultGuantanamo((Regime)regime.proxy());
-        guantanamo.scrutinise(original, output);
+        guantanamo.removeBadness(original, output);
 
         assertEquals(expected, output.toString());
     }

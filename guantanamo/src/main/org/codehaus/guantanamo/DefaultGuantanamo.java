@@ -26,7 +26,7 @@ public class DefaultGuantanamo implements Guantanamo {
         this.regime = regime;
     }
 
-    public void scrutinise(Reader original, Writer output) throws IOException {
+    public void removeBadness(Reader original, Writer output) throws IOException {
         BufferedReader originalCode = new BufferedReader(original);
 
         String line = null;

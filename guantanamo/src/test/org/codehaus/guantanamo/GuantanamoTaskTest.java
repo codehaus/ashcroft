@@ -27,7 +27,7 @@ public class GuantanamoTaskTest extends MockObjectTestCase {
         Mock guantanamoFactory = mock(GuantanamoFactory.class);
 //        Mock guantanamo = mock(Guantanamo.class);
 //        guantanamoFactory.expects(once()).method("createGuantanamo").with(isA(FileReader.class)).will(returnValue(guantanamo.proxy()));
-//        guantanamo.expects(once()).method("scrutinise").with(isA(FileReader.class),isA(FileWriter.class));
+//        guantanamo.expects(once()).method("removeBadness").with(isA(FileReader.class),isA(FileWriter.class));
 
         GuantanamoTask task = new GuantanamoTask();
         task.setProject(new Project());
