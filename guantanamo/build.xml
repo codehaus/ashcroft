@@ -206,12 +206,14 @@
             <param name="main.classes.dir" value="${basedir}/target/main/classes-no-clover"/>
         </antcall>
 
+        <copy file="${basedir}/LICENSE.txt" todir="${basedir}/target/main/classes-no-clover"/>
+
         <jar basedir="${basedir}/target/main/classes-no-clover" destfile="${jar.file}">
             <exclude name="**/*Test.class"/>
         </jar>
     </target>
 
-    <!-- This is linked to from the Confluence docs -->
+    <!-- This could be linked to from the Confluence docs once raw text download is supported by ViewCVS/Fisheye -->
 
     <property name="guantanamo.jar.file" value="${jar.file}"/>
     <property name="xpp3.jar.file" value="lib/xpp3-1.1.2a.jar"/>

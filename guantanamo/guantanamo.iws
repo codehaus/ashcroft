@@ -145,7 +145,7 @@
     <option name="HIDE_WARNINGS" value="false" />
   </component>
   <component name="FileEditorManager" split-orientation="vertical" split-proportion="0.5">
-    <first-group selected-file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/ant/AntMonitor.java">
+    <first-group selected-file="file://$PROJECT_DIR$/build.xml">
       <entry file="file://$PROJECT_DIR$/src/main/org/codehaus/guantanamo/OpenBlock.java" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
           <state line="28" column="0" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.569378">
@@ -155,7 +155,7 @@
       </entry>
       <entry file="file://$PROJECT_DIR$/build.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="55" column="0" selection-start="2022" selection-end="2022" vertical-scroll-proportion="0.49695495">
+          <state line="208" column="92" selection-start="8689" selection-end="8689" vertical-scroll-proportion="0.3861145">
             <folding />
           </state>
         </provider>
@@ -589,7 +589,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="2022" selection-end="2022" vertical-scroll-proportion="0.49695495">
+        <state line="208" column="92" selection-start="8689" selection-end="8689" vertical-scroll-proportion="0.3861145">
           <folding />
         </state>
       </provider>
