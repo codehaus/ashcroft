@@ -19,7 +19,7 @@
 
     <target name="compile">
         <mkdir dir="target/classes"/>
-        <javac srcdir="src/main" destdir="target/classes">
+        <javac srcdir="src/main" destdir="target/classes" debug="true">
             <classpath refid="main-classes"/>
         </javac>
     </target>

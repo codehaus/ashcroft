@@ -25,13 +25,15 @@ public class JohnAshcroft extends SecurityManager {
     private static final String CANT_INSTALL_SECURITYMANAGER = "Thou shalt have no other security managers before me";
     private static final String CANT_COMPARE_URLS = "You can't compare URLs during unit tests";
     private static final String CANT_CHANGE_SYSTEM_PROPERTIES = "You can't set system properties during unit tests";
+    private boolean inGetStackTrace = false;
 
     public void checkAccess(Thread t) {
-        if (isJUnitCall(getStackTrace())) {
+        String stackTrace = getStackTrace();
+        if (isJUnitCall(stackTrace)) {
             if (t.getName().startsWith("AWT-")) {
-                throw new CantDoThat(CANT_USE_AWT);
+                throw new CantDoThat(CANT_USE_AWT, stackTrace);
             } else {
-                throw new CantDoThat(CANT_START_THREADS);
+                throw new CantDoThat(CANT_START_THREADS, stackTrace);
             }
         }
     }
@@ -40,9 +42,9 @@ public class JohnAshcroft extends SecurityManager {
         String stackTrace = getStackTrace();
         if (isJUnitCall(stackTrace)) {
             if (isUrlEquals(stackTrace)) {
-                throw new CantDoThat(CANT_COMPARE_URLS);
+                throw new CantDoThat(CANT_COMPARE_URLS, stackTrace);
             } else {
-                throw new CantDoThat(CANT_OPEN_SOCKETS);
+                throw new CantDoThat(CANT_OPEN_SOCKETS, stackTrace);
             }
         }
     }
@@ -52,49 +54,54 @@ public class JohnAshcroft extends SecurityManager {
     }
 
     public void checkListen(int port) {
-        if (isJUnitCall(getStackTrace())) {
-            throw new CantDoThat(CANT_LISTEN_ON_SOCKETS);
+        String stackTrace = getStackTrace();
+        if (isJUnitCall(stackTrace)) {
+            throw new CantDoThat(CANT_LISTEN_ON_SOCKETS, stackTrace);
         }
     }
 
     public void checkExit(int status) {
-        if (isJUnitCall(getStackTrace())) {
-            throw new CantDoThat(CANT_EXIT_JVM);
+        String stackTrace = getStackTrace();
+        if (isJUnitCall(stackTrace)) {
+            throw new CantDoThat(CANT_EXIT_JVM, stackTrace);
         }
     }
 
     public void checkWrite(String file) {
-        if (isJUnitCall(getStackTrace())) {
-            throw new CantDoThat(CANT_WRITE_FILES);
+        String stackTrace = getStackTrace();
+        if (isJUnitCall(stackTrace)) {
+            throw new CantDoThat(CANT_WRITE_FILES, stackTrace);
         }
     }
 
     public void checkRead(String file) {
         String stackTrace = getStackTrace();
         if (isJUnitCall(stackTrace) && !isClassLoaderRead(stackTrace)) {
-            if (file.indexOf("font.properties") != -1) {
-                throw new CantDoThat(CANT_USE_AWT);
+            if (isJavaAwtCall(stackTrace)) {
+                throw new CantDoThat(CANT_USE_AWT, stackTrace);
             } else {
                 if(false) {
                 } else if(isJavaIoFileMkdirMethod(stackTrace)) {
-                    throw new CantDoThat(CANT_CREATE_DIRECTORIES + file);
+                    throw new CantDoThat(CANT_CREATE_DIRECTORIES + file, stackTrace);
                 } else if(isJavaIoFileExistsMethod(stackTrace)) {
-                    throw new CantDoThat(CANT_CHECK_FILE_PRESENCE + file);
+                    throw new CantDoThat(CANT_CHECK_FILE_PRESENCE + file, stackTrace);
                 } else if(!isJavaIoFileIsDirectoryMethod(stackTrace)) {
-                    throw new CantDoThat(CANT_READ_FILES + file);
+                    throw new CantDoThat(CANT_READ_FILES + file, stackTrace);
                 }
             }
         }
     }
 
     public void checkPermission(Permission perm) {
-        if ("createSecurityManager".equals(perm.getName())) {
-            throw new CantDoThat(CANT_INSTALL_SECURITYMANAGER);
-        } else if(perm instanceof PropertyPermission) {
-            if (!"line.separator".equals(perm.getName())) {
-                String stackTrace = getStackTrace();
-                if ("write".equals(perm.getActions()) && !isTimeZoneGetDefault(stackTrace)&& !isCompilerRun(stackTrace)) {
-                    throw new CantDoThat(CANT_CHANGE_SYSTEM_PROPERTIES);
+        if(!inGetStackTrace) {
+            String stackTrace = getStackTrace();
+            if ("createSecurityManager".equals(perm.getName())) {
+                throw new CantDoThat(CANT_INSTALL_SECURITYMANAGER, stackTrace);
+            } else if(perm instanceof PropertyPermission) {
+                if (!"line.separator".equals(perm.getName())) {
+                    if ("write".equals(perm.getActions()) && !isTimeZoneGetDefault(stackTrace)&& !isCompilerRun(stackTrace)) {
+                        throw new CantDoThat(CANT_CHANGE_SYSTEM_PROPERTIES, stackTrace);
+                    }
                 }
             }
         }
@@ -110,6 +117,10 @@ public class JohnAshcroft extends SecurityManager {
 
     private boolean isJUnitCall(String stackTrace) {
         return stackTrace.indexOf("junit.framework.TestCase") != -1;
+    }
+
+    private boolean isJavaAwtCall(String stackTrace) {
+        return stackTrace.indexOf("java.awt") != -1;
     }
 
     private boolean isClassLoaderRead(String stackTrace) {
@@ -129,10 +140,12 @@ public class JohnAshcroft extends SecurityManager {
     }
 
     private String getStackTrace() {
+        inGetStackTrace = true;
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         new Throwable().printStackTrace(pw);
         String stackTrace = sw.toString();
+        inGetStackTrace = false;
         return stackTrace;
     }
 }
