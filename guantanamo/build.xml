@@ -30,6 +30,15 @@
         </antcall>
     </target>
 
+<!-- START SNIPPET: taskdef
+<taskdef name="guantanamo" classname="org.codehaus.guantanamo.ant.GuantanamoTask">
+    <classpath>
+        <pathelement location="lib/guantanamo.jar"/>
+        <pathelement location="lib/xpp3-1.1.2a.jar"/>
+    </classpath>
+</taskdef>
+END SNIPPET: taskdef -->
+
     <target name="dogfood" depends="main">
         <taskdef name="guantanamo" classname="org.codehaus.guantanamo.ant.GuantanamoTask">
             <classpath>
@@ -43,9 +52,12 @@
             </classpath>
         </taskdef>
 
+<!-- START SNIPPET: guantanamo-clover -->
         <guantanamo
             clover="target/clover/main/coverage-report/clover.xml"
             dest="target/clover/guantanamo"/>
+<!-- END SNIPPET: guantanamo-clover -->
+
         <compare expected="src/main" actual="target/clover/guantanamo"/>
 
         <guantanamo

@@ -145,10 +145,10 @@
     <option name="HIDE_WARNINGS" value="false" />
   </component>
   <component name="FileEditorManager" split-orientation="vertical" split-proportion="0.5">
-    <first-group selected-file="file://$PROJECT_DIR$/common-targets.xml">
+    <first-group selected-file="file://$PROJECT_DIR$/build.xml">
       <entry file="file://$PROJECT_DIR$/build.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="68" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.76968503">
+          <state line="61" column="0" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.6574803">
             <folding />
           </state>
         </provider>
@@ -169,7 +169,7 @@
       </entry>
       <entry file="file://$PROJECT_DIR$/common-targets.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.45506692">
+          <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.28489482">
             <folding />
           </state>
         </provider>
@@ -665,14 +665,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.76968503">
+        <state line="61" column="0" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.6574803">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common-targets.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.45506692">
+        <state line="14" column="56" selection-start="481" selection-end="481" vertical-scroll-proportion="0.28489482">
           <folding />
         </state>
       </provider>
