@@ -2,6 +2,8 @@ package com.thoughtworks.ashcroft.runtime;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.Permission;
 import java.util.PropertyPermission;
 
@@ -25,9 +27,30 @@ public class JohnAshcroft extends SecurityManager {
     private static final String CANT_INSTALL_SECURITYMANAGER = "Thou shalt have no other security managers before me";
     private static final String CANT_COMPARE_URLS = "You can't compare URLs during unit tests";
     private static final String CANT_CHANGE_SYSTEM_PROPERTIES = "You can't set system properties during unit tests";
-    private boolean inGetStackTrace = false;
 
     private static final String LOGGING = System.getProperty("com.thoughtworks.ashcroft.runtime.logging");
+    private static PrintWriter LOG_WRITER = null;
+
+    private boolean inGetStackTrace = false;
+    private boolean hypocricy = false;
+
+    static {
+        if (LOGGING != null) {
+            if (LOGGING.equals("stdout")) {
+                LOG_WRITER = new PrintWriter(System.out);
+            } else if (LOGGING.equals("stderr")) {
+                LOG_WRITER = new PrintWriter(System.err);
+            } else {
+                try {
+                    LOG_WRITER = new PrintWriter(new FileWriter(LOGGING));
+                } catch (IOException e) {
+                    System.err.println("Ashcroft couldn't write log to " + LOGGING);
+                    e.printStackTrace(System.err);
+                    System.exit(-1);
+                }
+            }
+        }
+    }
 
     public void checkAccess(Thread t) {
         String stackTrace = getStackTrace();
@@ -70,9 +93,11 @@ public class JohnAshcroft extends SecurityManager {
     }
 
     public void checkWrite(String file) {
-        String stackTrace = getStackTrace();
-        if (isJUnitCall(stackTrace)) {
-            cantDoThat(CANT_WRITE_FILES, stackTrace);
+        if(!hypocricy) {
+            String stackTrace = getStackTrace();
+            if (isJUnitCall(stackTrace)) {
+                cantDoThat(CANT_WRITE_FILES, stackTrace);
+            }
         }
     }
 
@@ -163,12 +188,13 @@ public class JohnAshcroft extends SecurityManager {
     }
 
     private void cantDoThat(String whatYouCantDo, String stackTrace) {
-        if (LOGGING != null) {
-            System.out.println(whatYouCantDo);
-            System.out.println(stackTrace);
-        } else {
-            throw new CantDoThat(whatYouCantDo, stackTrace);
+        if (LOG_WRITER != null) {
+            hypocricy = true;
+            LOG_WRITER.println(whatYouCantDo);
+            LOG_WRITER.println(stackTrace);
+            hypocricy = false;
         }
+        throw new CantDoThat(whatYouCantDo, stackTrace);
     }
 
 }
