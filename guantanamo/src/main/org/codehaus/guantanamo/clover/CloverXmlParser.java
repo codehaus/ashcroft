@@ -50,8 +50,6 @@ public class CloverXmlParser implements SourceFinder, LineModifierProvider, Sour
             parser.setInput(cloverXml);
             parseDocument();
         } catch (XmlPullParserException e) {
-            e.printStackTrace();
-            throw new IOException(e.getMessage());
         }
     }
 

@@ -27,16 +27,10 @@ public class GuantanamoTask extends Task {
     private File cloverxml;
 
     public void setDest(File destDir) {
-        if (!destDir.isDirectory()) {
-            throw new BuildException("dest must be a directory. " + destDir.getAbsolutePath());
-        }
         this.destDir = destDir;
     }
 
     public void setCloverxml(File cloverxml) {
-        if (!cloverxml.isFile()) {
-            throw new BuildException("cloverxml must point to a Clover XML coverage file");
-        }
         this.cloverxml = cloverxml;
     }
 
@@ -45,16 +39,9 @@ public class GuantanamoTask extends Task {
         try {
             Guantanamo.runWithClover(cloverxml, destDir);
         } catch (IOException e) {
-            throw new BuildException(e);
         }
     }
 
     private void verifyProperties() {
-        if (destDir == null) {
-            throw new BuildException("dest must be specified.");
-        }
-        if (cloverxml == null) {
-            throw new BuildException("cloverxml must be specified.");
-        }
     }
 }

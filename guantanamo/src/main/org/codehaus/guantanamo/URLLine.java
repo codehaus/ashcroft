@@ -25,7 +25,6 @@ public class URLLine extends Object {
     }
 
     public boolean equals(Object o) {
-        if (this == o) return true;
         return toString().equals(o.toString());
     }
 
