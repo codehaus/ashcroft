@@ -45,8 +45,11 @@
                 <pathelement location="${ant.home}/lib/xml-apis.jar"/>
             </classpath>
 
-            <!-- See http://jira.codehaus.org/browse/ASH-3 -->
+            <!-- See http://jira.codehaus.org/browse/ASH-3 and http://www.eteks.com/pja/doc/com/eteks/awt/PJAToolkit.html -->
             <jvmarg value="-Dawt.toolkit=com.eteks.awt.PJAToolkit"/>
+            <jvmarg value="-Djava.awt.graphicsenv=com.eteks.java2d.PJAGraphicsEnvironment"/>
+            <!--jvmarg value="-Djava.awt.fonts=WTF"/-->
+
             <jvmarg value="-Djava.security.manager=com.thoughtworks.ashcroft.runtime.JohnAshcroft"/>
             <batchtest fork="yes" todir="target/test-reports">
                 <fileset dir="src/test">
