@@ -8,24 +8,25 @@
  * Original code by Aslak Hellesoy                                           *
  * Idea by Chris Stevenson                                                   *
  *****************************************************************************/
-package org.codehaus.guantanamo;
+package org.codehaus.guantanamo.clover;
+
+import org.codehaus.guantanamo.LineModifier;
+
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class CoverageRegime implements Regime {
-    private final CoverageInvestigator coverageInvestigator;
-
-    public CoverageRegime(CoverageInvestigator coverageInvestigator) {
-        this.coverageInvestigator = coverageInvestigator;
+class PlainLineModifier implements LineModifier {
+    public void write(String line, Writer out, boolean forceRemove) throws IOException {
+        if (!forceRemove) {
+            out.write(line);
+        }
     }
 
-    public String regimify(String line, int lineNumber) {
-        if(coverageInvestigator.isCovered(line, lineNumber)) {
-            return line;
-        } else {
-            return "/// NOT COVERED: " + line;
-        }
+    public boolean willRemove(String line) {
+        return false;
     }
 }

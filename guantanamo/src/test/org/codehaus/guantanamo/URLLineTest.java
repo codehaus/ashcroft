@@ -10,29 +10,20 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
-import org.generama.astunit.ASTTestCase;
-import org.xmlpull.v1.XmlPullParserException;
+import junit.framework.TestCase;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-
-import antlr.TokenStreamException;
-import antlr.RecognitionException;
+import java.net.MalformedURLException;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class AcceptanceTest extends ASTTestCase {
-    public void testShouldRemoveLinesAndLeaveSourceInComplingState() throws IOException, XmlPullParserException, TokenStreamException, RecognitionException {
-        File cloverXml = new File("target/clover.xml");
-        Guantanamo.runWithClover(cloverXml, new File("target/guantanamo"));
-        final URL expected = new File("src/expected/org/codehaus/guantanamo/PoorlyTested.java").toURL();
-        final URL actual = new File("target/guantanamo/org/codehaus/guantanamo/PoorlyTested.java").toURL();
-        assertAstEquals(expected, actual);
+public class URLLineTest extends TestCase {
+    public void testShouldBeEqual() throws MalformedURLException {
+        URLLine a = new URLLine(new File("target/clover.xml").toURL(), 1);
+        URLLine b = new URLLine(new File("target\\clover.xml").toURL(), 1);
+        assertEquals(a, b);
+        assertEquals(b, a);
     }
-
-
-
 }

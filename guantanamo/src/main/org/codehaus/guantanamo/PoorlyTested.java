@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (C) Guantanamo Organization. All rights reserved.               *
+ * Copyright (C) SourceVisitor Organization. All rights reserved.               *
  * ------------------------------------------------------------------------- *
  * The software in this package is published under the terms of the BSD      *
  * style license a copy of which has been included with this distribution in *
@@ -10,12 +10,18 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
-import java.io.Reader;
-
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public interface GuantanamoFactory {
-    Guantanamo createGuantanamo(Reader coverageReader);
+public class PoorlyTested {
+    public void methodWithUncoveredSimpleIfs() {
+        boolean b = true;
+        if(b) {
+            int i = 1;
+            if(i == 0) {
+                new Object();
+            }
+        }
+    }
 }

@@ -9,7 +9,7 @@ proven by test coverage.
 
 The best way to use Guantanamo is:
 1) Run your tests with the code coverage tool* enabled.
-2) Run guantanamo and write the guantanamoed code to a different folder, say guantanamo.
+2) Run sourceVisitortor and write the guantanamoed code to a different folder, say sourceVisitortor.
 3) Compile the guantanamoed code.
 4) Repeat step 1), but this time running against the guantanamoed code.
 5) Copy the guantanamoed code over the original code.
@@ -30,3 +30,27 @@ the US army in any of these wars?"
 
 If you like the idea of Guantanamo, you may also like Ashcroft, another tool in the "Extreme XP tools"
 family.
+
+---
+
+What happens when you delete code? Well, you remove some functionality. If there are no tests for the code, (which is the case
+if it was removed by Guantanamo), this functionality will only be activated when the software is used.
+
+Most software follows the 20/80 rule in terms of "20% of the code is executed 80% of the time." Most of the code in a software
+system will be executed very rarely. Which is why it will go undetected for a long while, until it discovered in production.
+-By a user.
+
+Then you have to go back and fix it.
+
+---
+
+What if the test is wrong?
+
+In XP tests get written as a result of a requirement. They are as usual correct initially, since they are not really tests, but
+SPECIFICATION, FEATURE DRIVEN!!! JBehave.
+
+---
+
+Guantanamo aims to be able to delete code and leave it in a compilable state, If you run your app "live" with coverage
+enabled (i.e. not via the unit tests), you should be able to run sourceVisitortor over it afterwards to delete all code that
+isn't used.

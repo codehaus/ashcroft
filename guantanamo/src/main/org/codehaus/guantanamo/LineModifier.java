@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (C) Guantanamo Organization. All rights reserved.               *
+ * Copyright (C) SourceVisitor Organization. All rights reserved.               *
  * ------------------------------------------------------------------------- *
  * The software in this package is published under the terms of the BSD      *
  * style license a copy of which has been included with this distribution in *
@@ -10,10 +10,14 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
+import java.io.Writer;
+import java.io.IOException;
+
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public interface CoverageInvestigator {
-    boolean isCovered(String line, int lineNumber);
+public interface LineModifier {
+    boolean willRemove(String line);
+    void write(String line, Writer out, boolean forceRemove) throws IOException;
 }

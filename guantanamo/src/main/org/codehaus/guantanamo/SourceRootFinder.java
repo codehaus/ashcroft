@@ -10,19 +10,12 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
+import java.net.URL;
+
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class JavaSourceToCloverReportMatcher {
-    private final String cloverRootDir;
-
-    public JavaSourceToCloverReportMatcher(String cloverRootDir) {
-        this.cloverRootDir = cloverRootDir;
-    }
-
-    public String getCoveragePath(String relativeSourcePath) {
-        int index = relativeSourcePath.indexOf(".java");
-        return cloverRootDir + "/" + relativeSourcePath.substring(0, index) + ".html";
-    }
+public interface SourceRootFinder {
+    URL getSourceRootURL();
 }

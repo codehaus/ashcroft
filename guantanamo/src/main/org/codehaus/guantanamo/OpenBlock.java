@@ -14,11 +14,16 @@ package org.codehaus.guantanamo;
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public interface Regime {
-    /**
-     * Modifies a line of code according to a certain regime.
-     * @param line the line to modify
-     * @return the modified line
-     */
-    String regimify(String line, int lineNumber);
+public class OpenBlock extends AbstractAnalysis {
+    public OpenBlock(boolean removed) {
+        super(removed);
+    }
+
+    public boolean isOpenBlock() {
+        return true;
+    }
+
+    public boolean isCloseBlock() {
+        return false;
+    }
 }

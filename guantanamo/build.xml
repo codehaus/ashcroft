@@ -1,18 +1,72 @@
 <project name="guantanamo" default="jar">
-    <target name="compile" description="Compile java source">
-        <property name="compile.src" value="${basedir}/src/main"/>
-        <property name="clover.dest" value="${basedir}/target/clover"/>
-        <property name="compile.dest" value="${basedir}/target/classes"/>
-        <property name="jar.file" value="${basedir}/target/${ant.project.name}.jar"/>
+    <import file="clover-tasks.xml"/>
 
-        <mkdir dir="${compile.dest}"/>
-        <javac destdir="${compile.dest}" debug="on" includeantruntime="true">
-            <src location="${compile.src}"/>
+    <target name="compile" depends="clover-init" description="Compile java source">
+        <mkdir dir="${basedir}/target/classes"/>
+        <javac destdir="${basedir}/target/classes" debug="on" includeantruntime="true">
+            <src location="${basedir}/src/main"/>
+            <classpath>
+                <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
+            </classpath>
         </javac>
     </target>
 
+    <target name="compile-tests" depends="compile">
+        <mkdir dir="${basedir}/target/test-classes"/>
+        <javac destdir="${basedir}/target/test-classes" debug="on" includeantruntime="true">
+            <src location="${basedir}/src/test"/>
+            <classpath>
+                <pathelement location="${basedir}/target/classes"/>
+                <pathelement location="${basedir}/lib/jmock-1.0.1.jar"/>
+                <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
+                <pathelement location="${basedir}/lib/generama-1.0.jar"/>
+                <pathelement location="${basedir}/lib/antlr-2.7.2.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="run-tests" depends="compile-tests" description="Run the unit tests">
+        <mkdir dir="${basedir}/target/test-logs"/>
+        <junit fork="yes" forkmode="once" printsummary="yes" failureproperty="tests.failed">
+<!--            <jvmarg value="-D${ashcroft}=com.thoughtworks.ashcroft.runtime.JohnAshcroft"/>-->
+<!--            <jvmarg value="-Dcom.thoughtworks.ashcroft.runtime.logging=${basedir}/target/ashcroft.log"/>-->
+<!--            <jvmarg value="-Dcom.thoughtworks.ashcroft.runtime.forgiving=${ashcroft.forgiving}"/>-->
+            <classpath>
+                <pathelement location="${basedir}/target/classes"/>
+                <pathelement location="${basedir}/target/test-classes"/>
+                <pathelement location="${basedir}/lib/jmock-1.0.1.jar"/>
+                <pathelement location="${basedir}/lib/xpp3-1.1.2a.jar"/>
+                <pathelement location="${basedir}/lib/generama-1.0.jar"/>
+                <pathelement location="${basedir}/lib/antlr-2.7.2.jar"/>
+                <pathelement location="${ant.home}/lib/clover-1.1.1.jar"/>
+                <pathelement location="${ant.home}/src/test"/>
+            </classpath>
+            <formatter type="xml"/>
+            <formatter type="plain"/>
+            <batchtest todir="${basedir}/target/test-logs">
+                <fileset dir="${basedir}/src/test">
+                    <exclude name="**/integration/**/*Test.java"/>
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="junit-report" depends="run-tests">
+        <mkdir dir="${basedir}/target/test-reports"/>
+        <junitreport todir="${basedir}/target/test-reports">
+            <fileset dir="${basedir}/target/test-logs">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${basedir}/target/test-reports" styledir="${ant.home}/etc"/>
+        </junitreport>
+    </target>
+
+    <target name="assert-tests-passed" depends="run-tests" if="tests.failed">
+        <fail>There were test failures</fail>
+    </target>
     <target name="jar" depends="compile" description="Jar java classes">
-        <jar basedir="${basedir}/target/classes" destfile="${jar.file}"/>
+        <jar basedir="${basedir}/target/classes" destfile="${basedir}/target/${ant.project.name}.jar"/>
     </target>
 
     <target name="clean" description="Clean up the output directories">
@@ -21,7 +75,7 @@
 
     <!-- we like our own dog food -->
     <target name="guantanamo" depends="compile">
-        <taskdef name="guantanamo" classname="org.codehaus.guantanamo.GuantanamoTask" classpath="${compile.dest}" />
+        <taskdef name="sourceVisitortor" classname="org.codehaus.guantanamo.GuantanamoTask" classpath="${compile.dest}" />
         <guantanamo dir="${compile.src}" clover="${clover.dest}">
             <include name="**/*.java"/>
         </guantanamo>

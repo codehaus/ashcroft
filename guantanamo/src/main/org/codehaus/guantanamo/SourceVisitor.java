@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (C) Guantanamo Organization. All rights reserved.               *
+ * Copyright (C) SourceVisitor Organization. All rights reserved.               *
  * ------------------------------------------------------------------------- *
  * The software in this package is published under the terms of the BSD      *
  * style license a copy of which has been included with this distribution in *
@@ -10,22 +10,15 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
-import org.jmock.Mock;
-import org.jmock.MockObjectTestCase;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Map;
+import java.net.URL;
 
 /**
  * @author Aslak Helles&oslash;y
  * @version $Revision$
  */
-public class CoverageRegimeTest extends MockObjectTestCase {
-    public void testShouldDeleteUntestedLines() {
-        Mock lineInvestigator = mock(CoverageInvestigator.class);
-        Regime regime = new CoverageRegime((CoverageInvestigator)lineInvestigator.proxy());
-
-        lineInvestigator.expects(once()).method("isCovered").with(eq("ping"), eq(10)).will(returnValue(false));
-        lineInvestigator.expects(once()).method("isCovered").with(eq("pong"), eq(11)).will(returnValue(true));
-
-        assertEquals("/// NOT COVERED: ping", regime.regimify("ping", 10));
-        assertEquals("pong", regime.regimify("pong", 11));
-    }
+public interface SourceVisitor {
+    void visitSource(URL source) throws IOException;
 }
