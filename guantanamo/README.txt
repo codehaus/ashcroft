@@ -42,7 +42,6 @@ system will be executed very rarely. Which is why it will go undetected for a lo
 
 Then you have to go back and fix it.
 
-
 ---
 
 What if the test is wrong?
