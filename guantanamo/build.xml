@@ -1,7 +1,7 @@
 <project name="guantanamo" default="full">
 
     <!--
-    BUILD PROCESS
+    FULL BUILD PROCESS:
 
     STEP-1 (required to make main tests pass)
     1) Enable clover for testdata
@@ -20,6 +20,11 @@
     10) Run guantanamo task over main
     11) Assert with ASTTestCase that main is equal to guantanamoed main
     12) Make a jar of main
+
+    SIMPLE BUILD PROCESS: (If Clover not available)
+
+    1) Compile classes
+    2) Jar them up
     -->
     <target name="full" depends="step-1, step-2, step-3"/>
 
@@ -187,6 +192,16 @@
         <antcall target="run-main-tests">
             <param name="main.classes.dir" value="${basedir}/target/main/classes-no-clover"/>
             <param name="param-test-exclude" value="nada"/>
+        </antcall>
+
+        <jar basedir="${basedir}/target/main/classes-no-clover" destfile="${jar.file}">
+            <exclude name="**/*Test.class"/>
+        </jar>
+    </target>
+
+    <target name="simple-build">
+        <antcall target="compile-main">
+            <param name="main.classes.dir" value="${basedir}/target/main/classes-no-clover"/>
         </antcall>
 
         <jar basedir="${basedir}/target/main/classes-no-clover" destfile="${jar.file}">

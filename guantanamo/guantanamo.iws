@@ -178,7 +178,7 @@
       </entry>
       <entry file="file://$PROJECT_DIR$/build.xml" pinned="false">
         <provider selected="true" editor-type-id="text-editor">
-          <state line="70" column="0" selection-start="2568" selection-end="2568" vertical-scroll-proportion="0.9354839">
+          <state line="209" column="0" selection-start="8595" selection-end="8595" vertical-scroll-proportion="0.9354839">
             <folding />
           </state>
         </provider>
@@ -612,7 +612,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2568" selection-end="2568" vertical-scroll-proportion="0.9354839">
+        <state line="209" column="0" selection-start="8595" selection-end="8595" vertical-scroll-proportion="0.9354839">
           <folding />
         </state>
       </provider>
