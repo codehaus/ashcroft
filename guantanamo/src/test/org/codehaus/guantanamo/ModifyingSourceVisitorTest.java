@@ -10,13 +10,12 @@
  *****************************************************************************/
 package org.codehaus.guantanamo;
 
-import org.jmock.MockObjectTestCase;
 import org.jmock.Mock;
+import org.jmock.MockObjectTestCase;
 
-import java.net.URL;
-import java.net.MalformedURLException;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * @author Aslak Helles&oslash;y

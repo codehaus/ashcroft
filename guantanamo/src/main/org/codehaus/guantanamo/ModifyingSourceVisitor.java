@@ -38,7 +38,7 @@ public class ModifyingSourceVisitor implements SourceVisitor {
     private URL getOut(URL source) throws MalformedURLException {
         final URL sourceRootURL = sourceRootFinder.getSourceRootURL();
         if(sourceRootURL.equals(destinationRootURL)) {
-            throw new OwnTerritoryException("It's too write the offending source to its original location. Specify a different destination.");
+            throw new OwnTerritoryException("I don't have the balls to put the guantanamoed sources back to its original location. Specify a different destination.");
         }
         String sourceRootPath = sourceRootURL.toExternalForm();
         String sourcePath = source.toExternalForm();
