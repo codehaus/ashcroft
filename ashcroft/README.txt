@@ -12,6 +12,8 @@ However, if you are developing according to an agile process such as XP, perhaps
 
 There are ways to adress this frustration - simply by making the tests run fast as a lightning. The rest of this article will focus on tools and techniques that you can follow to achieve this.
 
+just a test......
+
 Before we start looking at explicit techniques to make tests run fast, let's have a look at the typical caracteristics of a slow running tests. Things usually start grinding into a halt when the following things happen:
 
 o Files are accessed
