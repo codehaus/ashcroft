@@ -49,4 +49,5 @@
     <target name="assert-tests-passed">
         <fail if="tests.failed">There were test failures</fail>
     </target>
+
 </project>
