@@ -1,0 +1,68 @@
+<project name="Ashcroft" default="jar" basedir=".">
+
+    <path id="main-classes">
+        <pathelement location="lib/qdox-1.6-SNAPSHOT.jar"/>
+    </path>
+
+    <path id="test-classes">
+        <path refid="main-classes"/>
+        <pathelement location="target/classes"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="target"/>
+    </target>
+
+    <target name="jar" depends="compile, test, fail-if-failed">
+        <jar basedir="target/classes" jarfile="target/ashcroft.jar"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="target/classes"/>
+        <javac srcdir="src/main" destdir="target/classes">
+            <classpath refid="main-classes"/>
+        </javac>
+    </target>
+
+    <target name="compile-tests">
+        <mkdir dir="target/test-classes"/>
+        <javac srcdir="src/test" destdir="target/test-classes">
+            <classpath refid="test-classes"/>
+        </javac>
+    </target>
+
+    <target name="test" depends="compile-tests, copy-test-sources">
+        <junit printsummary="yes" failureproperty="tests.failed">
+            <formatter type="plain"/>
+            <classpath>
+                <pathelement location="target/classes"/>
+                <pathelement location="target/test-classes"/>
+                <pathelement location="lib/qdox-1.6-SNAPSHOT.jar"/>
+            </classpath>
+ 
+            <jvmarg value="-Djava.security.manager=com.thoughtworks.ashcroft.runtime.JohnAshcroft"/>
+            <batchtest fork="yes" todir=".">
+                <fileset dir="src/test">
+                    <include name="**/runtime/**/*"/>
+                </fileset>
+            </batchtest>
+            <!-- these tests actually read from files, so ashcroft must be disabled -->
+            <batchtest fork="no" todir=".">
+                <fileset dir="src/test">
+                    <include name="**/analysis/**/*"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="copy-test-sources">
+        <copy todir="target/test-classes">
+            <fileset dir="src/test"/>
+        </copy>
+    </target>
+
+    <target name="fail-if-failed" if="tests.failed">
+        <fail>There were test failures</fail>
+    </target>
+ 
+</project>
